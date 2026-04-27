@@ -1,616 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Kimmy and the Little Planet Helpers</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+<title>Kimmy and the Little Planet Helpers | Children's Book</title>
+
+<!-- SEO -->
+<meta name="description" content="A heartwarming children's book that teaches kids to care for the planet. Follow Kimmy and her friends as they make a difference.">
+
+<!-- Facebook / Social Preview -->
+<meta property="og:title" content="Kimmy and the Little Planet Helpers">
+<meta property="og:description" content="Inspire kids to protect the planet 🌍 A beautiful story about small actions making a big difference.">
+<meta property="og:image" content="https://littleplanethelpers.com/hero.jpg">
+<meta property="og:url" content="https://littleplanethelpers.com">
+<meta property="og:type" content="website">
 
 <style>
-:root {
-  --green: #b9d86b;
-  --green-soft: #eaf4d0;
-  --green-deep: #6b8f2a;
-  --orange: #f58a3c;
-  --orange-dark: #c95f1f;
-  --cream: #fffaf0;
-  --ink: #2f2527;
-  --blue: #10255c;
-}
 
-* {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
+/* --- BASE --- */
 body {
   margin: 0;
-  font-family: "Comic Sans MS", "Comic Neue", cursive;
-  background: var(--cream);
-  color: var(--ink);
-  line-height: 1.65;
+  font-family: Arial, sans-serif;
+  background: #fff;
+  color: #333;
+  text-align: center;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
 }
 
 img {
   max-width: 100%;
-  display: block;
+  border-radius: 12px;
 }
 
-a {
-  color: inherit;
+/* --- HERO --- */
+.hero h1 {
+  font-size: 2.6em;
+  margin-bottom: 10px;
 }
 
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  background: rgba(185, 216, 107, 0.96);
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid rgba(0,0,0,0.06);
+.hero p {
+  font-size: 1.2em;
+  opacity: 0.8;
 }
 
-.nav-wrap {
-  max-width: 1180px;
-  margin: auto;
-  padding: 14px 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-}
-
-.logo {
-  width: 170px;
-  height: auto;
-}
-
-.nav {
-  display: flex;
-  gap: 28px;
-  align-items: center;
-  font-size: 17px;
-}
-
-.nav a {
-  text-decoration: none;
-}
-
-.button {
+/* --- CTA BUTTON --- */
+.cta-button {
   display: inline-block;
-  background: var(--orange);
-  color: #21130d;
+  background: #ff7a00;
+  color: white;
+  padding: 14px 26px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 8px;
   text-decoration: none;
-  padding: 13px 24px;
-  border: 2px solid var(--orange-dark);
-  border-radius: 999px;
-  font-weight: 700;
-  box-shadow: 0 5px 0 rgba(160, 83, 28, 0.25);
-  transition: transform .2s ease, box-shadow .2s ease;
+  margin-top: 15px;
+  transition: 0.2s;
 }
-
-.button:hover {
+.cta-button:hover {
+  background: #e56d00;
   transform: translateY(-2px);
-  box-shadow: 0 8px 0 rgba(160, 83, 28, 0.22);
 }
 
-.hero {
-  max-width: 1180px;
-  margin: auto;
-  padding: 64px 24px 72px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 56px;
-  align-items: center;
-}
-
-.hero-copy h1,
-.section-title {
-  font-size: clamp(38px, 5vw, 62px);
-  line-height: 1.05;
-  margin: 0 0 18px;
-  color: var(--ink);
-}
-
-.hero-copy h2 {
-  font-size: clamp(22px, 3vw, 34px);
-  margin: 0 0 28px;
-  color: var(--orange-dark);
-}
-
-.hero-copy p {
-  font-size: 20px;
-  max-width: 560px;
-}
-
-.hero-cover {
-  border-radius: 20px;
-  box-shadow: 0 18px 45px rgba(0,0,0,.16);
-  overflow: hidden;
-  background: white;
-}
-
-.section {
-  max-width: 1180px;
-  margin: auto;
-  padding: 76px 24px;
-}
-
-.split {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 56px;
-  align-items: center;
-}
-
-.card-img {
-  border-radius: 18px;
-  overflow: hidden;
-  box-shadow: 0 16px 36px rgba(0,0,0,.13);
-  background: white;
-}
-
-.green-block {
-  background: #a8cf8f;
-}
-
-.green-inner {
-  max-width: 1180px;
-  margin: auto;
-  padding: 76px 24px;
-}
-
-.orange-heading {
-  color: var(--orange);
-  font-size: clamp(34px, 4vw, 52px);
-  margin: 0 0 24px;
-  line-height: 1.1;
-}
-
-.text-large {
-  font-size: 20px;
-}
-
-ul {
-  padding-left: 24px;
-}
-
-li {
-  margin-bottom: 8px;
-}
-
-.gallery {
-  background: white;
-  padding: 18px 0;
-}
-
-.gallery-row {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 14px;
-  max-width: 1320px;
-  margin: auto;
-  padding: 0 14px;
-}
-
-.gallery-row img {
-  width: 100%;
-  height: 420px;
-  object-fit: cover;
-  object-position: top;
-  border-radius: 14px;
-  cursor: pointer;
-  transition: transform .25s ease, box-shadow .25s ease;
-}
-
-.gallery-row img:hover {
-  transform: scale(1.025);
-  box-shadow: 0 14px 32px rgba(0,0,0,.18);
-}
-
-.testimonials {
-  background: white;
-}
-
-.testimonial-grid {
-  max-width: 1180px;
-  margin: auto;
-  padding: 76px 24px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 42px;
-  text-align: center;
-}
-
-.quote-mark {
-  font-size: 86px;
-  line-height: 1;
-  color: var(--green);
-  margin-bottom: -20px;
-}
-
-.testimonial-card:nth-child(2) .quote-mark {
-  color: var(--orange);
-}
-
-.testimonial-card h3 {
-  font-size: 26px;
-  margin-bottom: 16px;
-}
-
-.help-banner {
-  background: var(--green);
-  text-align: center;
-  padding: 54px 24px;
-}
-
-.help-banner h2 {
-  margin: 0 0 10px;
-  font-size: clamp(34px, 4vw, 52px);
-}
-
-.help-banner p {
-  margin: 0;
-  color: var(--orange-dark);
-  font-size: clamp(22px, 3vw, 34px);
-  font-weight: 700;
-}
-
-.actions {
-  background: white;
-}
-
-.action-grid {
-  max-width: 1180px;
-  margin: auto;
-  padding: 76px 24px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-}
-
-.action-grid h2 {
-  color: var(--orange);
-  font-size: 36px;
-}
-
-.action-item {
-  margin-bottom: 22px;
-}
-
-.action-item strong {
-  display: block;
-  font-size: 20px;
-}
-
-.good-news {
-  background: var(--green);
-  text-align: center;
-  padding: 58px 24px;
-}
-
-.good-news h2 {
-  font-size: clamp(34px, 4vw, 52px);
-  margin: 0 0 12px;
-}
-
-.good-news p {
-  font-size: clamp(22px, 3vw, 34px);
-  color: var(--orange-dark);
-  font-weight: 700;
-  margin: 0;
-}
-
-.author {
-  background: #f7f0df;
-}
-
-.author-wrap {
-  max-width: 1180px;
-  margin: auto;
-  padding: 80px 24px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 56px;
-  align-items: center;
-}
-
-.author img {
-  border: 10px solid var(--green);
-  border-radius: 6px;
-  box-shadow: 0 16px 36px rgba(0,0,0,.14);
-}
-
-.footer {
-  text-align: center;
-  padding: 42px 24px;
-  background: var(--cream);
-  font-weight: 700;
-  letter-spacing: .04em;
-}
-
-.footer img {
-  width: 210px;
-  margin: 0 auto 20px;
-}
-
-.lightbox {
-  display: none;
+/* --- STICKY BUY --- */
+.sticky-buy {
   position: fixed;
-  z-index: 99;
-  inset: 0;
-  background: rgba(0,0,0,.82);
+  bottom: 20px;
+  right: 20px;
+  background: #ff7a00;
+  color: white;
+  padding: 14px 20px;
+  border-radius: 999px;
+  font-weight: bold;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  z-index: 999;
+}
+
+/* --- GALLERY --- */
+.gallery img {
+  margin: 10px;
+  cursor: pointer;
+}
+
+/* --- LIGHTBOX --- */
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.9);
+  display: none;
   align-items: center;
   justify-content: center;
-  padding: 24px;
+  z-index: 9999;
 }
-
 .lightbox img {
-  max-height: 92vh;
-  max-width: 92vw;
-  border-radius: 12px;
-  box-shadow: 0 20px 60px rgba(0,0,0,.4);
+  max-width: 90%;
+  max-height: 90%;
 }
 
-.lightbox.show {
-  display: flex;
-}
-
-@media (max-width: 850px) {
-  .nav {
-    display: none;
-  }
-
-  .hero,
-  .split,
-  .author-wrap,
-  .action-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .hero {
-    padding-top: 36px;
-  }
-
-  .gallery-row {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .gallery-row img {
-    height: 320px;
-  }
-
-  .testimonial-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 520px) {
-  .logo {
-    width: 130px;
-  }
-
-  .button {
-    padding: 11px 16px;
-    font-size: 15px;
-  }
-
-  .gallery-row {
-    grid-template-columns: 1fr;
-  }
-
-  .gallery-row img {
-    height: auto;
-  }
-}
 </style>
 </head>
 
 <body>
 
-<header class="site-header">
-  <div class="nav-wrap">
-    <a href="#top"><img src="logo.png" alt="Kimmy and the Little Planet Helpers logo" class="logo"></a>
+<div class="container">
 
-    <nav class="nav">
-      <a href="#about">About Kimmy</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#reviews">Testimonials</a>
-      <a href="#help">Help Save Our Planet</a>
-    </nav>
+  <!-- HERO -->
+  <div class="hero">
+    <img src="hero.jpg">
 
-    <a class="button" href="https://geni.us/iqsYrB" target="_blank">Order a Book</a>
-  </div>
-</header>
+    <h1>Inspire Kids to Protect the Planet 🌍</h1>
+    <p>A heartwarming story that shows how small actions make a big difference.</p>
 
-<main id="top">
-
-<section class="hero">
-  <div class="hero-copy">
-    <h1>Join Kimmy’s Adventure</h1>
-    <h2>Together We Can Make a Difference</h2>
-    <p>Embark on a delightful journey with Kimmy and the Little Planet Helpers, a charming children’s picture book that inspires young readers to take small actions to help protect our planet.</p>
-    <p>Discover how a simple daily habit can create a ripple effect of positive change.</p>
-    <a class="button" href="https://geni.us/iqsYrB" target="_blank">Order a Book</a>
+    <a href="https://www.amazon.com.au/dp/B0GWD98S82" class="cta-button" target="_blank">
+      Buy the Book on Amazon
+    </a>
   </div>
 
-  <div class="hero-cover">
-    <img src="hero.jpg" alt="Kimmy and the Little Planet Helpers book cover">
+  <!-- MEET KIMMY -->
+  <h2>Meet Kimmy</h2>
+  <img src="meet.jpg">
+
+  <!-- GALLERY -->
+  <h2>Inside the Story</h2>
+  <div class="gallery">
+    <img src="gallery1.jpg" onclick="openLightbox(this.src)">
+    <img src="gallery2.jpg" onclick="openLightbox(this.src)">
+    <img src="gallery3.jpg" onclick="openLightbox(this.src)">
+    <img src="gallery4.jpg" onclick="openLightbox(this.src)">
   </div>
-</section>
 
-<section class="green-block" id="about">
-  <div class="green-inner split">
-    <div>
-      <img src="logo.png" alt="Kimmy book logo" style="max-width:320px; margin-bottom:34px;">
-      <p class="text-large">Kimmy and the Little Planet Helpers is a heartwarming story inspired by the author’s wife, Kim, who demonstrates that anyone can contribute to a cleaner world.</p>
-      <p class="text-large">Through her daily walks, she collects litter, showing children that even the smallest actions can lead to big differences in our environment.</p>
-      <a class="button" href="https://geni.us/iqsYrB" target="_blank">Order a Book</a>
-    </div>
+  <!-- FINAL CTA -->
+  <div style="margin: 60px 0;">
+    <h2>Ready to inspire a child?</h2>
+    <p>This story helps kids understand how they can protect their world.</p>
 
-    <div class="card-img">
-      <img src="join.jpg" alt="Kimmy and friends helping keep the town clean">
-    </div>
+    <a href="https://www.amazon.com.au/dp/B0GWD98S82" class="cta-button" target="_blank">
+      Get Your Copy Now
+    </a>
   </div>
-</section>
 
-<section class="section">
-  <div class="split">
-    <div>
-      <h2 class="orange-heading">Meet Kimmy</h2>
-      <p class="text-large">Meet Kimmy. She's a kind-hearted girl who loves her town and her planet. When she discovers litter on her favourite path, Kimmy decides it’s time to take action.</p>
-      <p class="text-large">With help from her friends and her magical sparkling bag, she begins a joyful clean-up mission that inspires the whole community.</p>
+  <!-- AUTHOR -->
+  <h2>About the Author</h2>
+  <img src="author.jpg">
 
-      <p><strong>Kimmy and the Little Planet Helpers is a beautifully illustrated children’s story that teaches:</strong></p>
-      <ul>
-        <li>Respect for nature</li>
-        <li>The importance of not littering</li>
-        <li>Kindness and teamwork</li>
-        <li>How small actions can make a big difference</li>
-      </ul>
+</div>
 
-      <p>Perfect for ages 3–8, this heartwarming book helps children understand how caring for their environment helps animals, people, and the planet.</p>
-      <p>Includes a special “Facts for Parents” section to encourage learning and discussion.</p>
-    </div>
+<!-- STICKY BUY BUTTON -->
+<a href="https://www.amazon.com.au/dp/B0GWD98S82" class="sticky-buy" target="_blank">
+  Buy Now
+</a>
 
-    <div class="card-img">
-      <img src="meet.jpg" alt="Kimmy picking up litter on the path">
-    </div>
-  </div>
-</section>
-
-<section class="gallery" id="gallery">
-  <div class="gallery-row">
-    <img src="gallery1.jpg" alt="Kimmy and friends holding signs">
-    <img src="gallery2.jpg" alt="Kimmy and friends being photographed after cleaning">
-    <img src="gallery3.jpg" alt="A clean park and path">
-    <img src="gallery4.jpg" alt="Little Planet Helpers recycling and caring for flowers">
-  </div>
-</section>
-
-<section class="testimonials" id="reviews">
-  <div class="testimonial-grid">
-    <div class="testimonial-card">
-      <div class="quote-mark">“</div>
-      <h3>Lily Johnson</h3>
-      <p>“Kimmy's story is delightful! It teaches kids the importance of caring for our planet in a fun and engaging way. My children loved it!”</p>
-    </div>
-
-    <div class="testimonial-card">
-      <div class="quote-mark">“</div>
-      <h3>Mark Thompson</h3>
-      <p>“I bought it for the grandchildren. It's a wonderful book that encourages young readers to think about their impact on the environment. The illustrations are beautiful, and the message is clear!”</p>
-    </div>
-
-    <div class="testimonial-card">
-      <div class="quote-mark">“</div>
-      <h3>Sophie Kwan</h3>
-      <p>“Kimmy and the Little Planet Helpers is an inspiring story that prompts discussions about environmental responsibility. It's a must-have for every child's bookshelf!”</p>
-    </div>
-  </div>
-</section>
-
-<section class="help-banner" id="help">
-  <h2>Help Save Our Planet</h2>
-  <p>Small actions can make a big difference</p>
-</section>
-
-<section class="actions">
-  <div class="action-grid">
-    <div>
-      <h2>What You Can Do</h2>
-
-      <div class="action-item">
-        <strong>🗑️ Find a bin</strong>
-        Always put your rubbish in a bin — or take it home.
-      </div>
-
-      <div class="action-item">
-        <strong>🎒 Take your litter with you</strong>
-        No bin? Keep it in your bag until you find one.
-      </div>
-
-      <div class="action-item">
-        <strong>👀 Pick up one extra piece</strong>
-        Be a Little Planet Helper — pick up one piece you see.
-      </div>
-
-      <div class="action-item">
-        <strong>🌿 Look after nature</strong>
-        Leave parks, beaches, and bushland clean.
-      </div>
-
-      <div class="action-item">
-        <strong>♻️ Recycle when you can</strong>
-        Bottles, cans, and paper can be reused.
-      </div>
-    </div>
-
-    <div>
-      <h2>Why It Matters</h2>
-      <p>Everything in nature is connected. When one part is harmed, it can affect many others.</p>
-
-      <h2>Did You Know?</h2>
-
-      <div class="action-item">🌊 Over 8 million tonnes of plastic enter the ocean every year<br>(That’s like a truckload every minute)</div>
-      <div class="action-item">🐢 More than 1 million sea animals die each year from plastic</div>
-      <div class="action-item">🐦 90% of seabirds have plastic in their stomachs</div>
-      <div class="action-item">🐠 Plastic breaks into tiny pieces and enters the food of sea creatures and land animals</div>
-      <div class="action-item">🦀 When one species is harmed, others are affected too</div>
-      <div class="action-item">🌏 Most litter starts on land and travels to the ocean</div>
-    </div>
-  </div>
-</section>
-
-<section class="good-news">
-  <h2>The Good News Is</h2>
-  <p>Small actions from people like you can help protect our planet 🌏</p>
-</section>
-
-<section class="author" id="connect">
-  <div class="author-wrap">
-    <div>
-      <img src="logo.png" alt="Kimmy and the Little Planet Helpers logo" style="width:340px; border:none; box-shadow:none; margin-bottom:36px;">
-      <p class="text-large">Rogan and Kim Carroll are Sydney Northern Beaches locals. They love the beach and take pride in their local area.</p>
-      <p class="text-large">Walking to work, or to the beach they collect the rubbish that people have discarded on the street.</p>
-      <p class="text-large">“It's heartbreaking that someone's thoughtless action can have a damaging effect of our environment.” They do their bit to save the planet each day.</p>
-      <a class="button" href="https://geni.us/iqsYrB" target="_blank">Order a Book</a>
-    </div>
-
-    <img src="author.jpg" alt="Rogan and Kim Carroll holding Kimmy and the Little Planet Helpers">
-  </div>
-</section>
-
-</main>
-
-<footer class="footer">
-  <img src="logo-globe.png" alt="Little Planet Helper globe logo">
-  <div>LITTLE PLANET HELPERS PUBLISHING</div>
-</footer>
-
-<div class="lightbox" id="lightbox">
-  <img id="lightbox-img" src="" alt="">
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <img id="lightbox-img">
 </div>
 
 <script>
-const galleryImages = document.querySelectorAll('.gallery-row img');
-const lightbox = document.getElementById('lightbox');
-const lightboxImg = document.getElementById('lightbox-img');
-
-galleryImages.forEach(img => {
-  img.addEventListener('click', () => {
-    lightboxImg.src = img.src;
-    lightbox.classList.add('show');
-  });
-});
-
-lightbox.addEventListener('click', () => {
-  lightbox.classList.remove('show');
-  lightboxImg.src = '';
-});
+function openLightbox(src) {
+  document.getElementById('lightbox').style.display = 'flex';
+  document.getElementById('lightbox-img').src = src;
+}
+function closeLightbox() {
+  document.getElementById('lightbox').style.display = 'none';
+}
 </script>
 
 </body>
