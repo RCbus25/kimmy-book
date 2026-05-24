@@ -8,77 +8,73 @@
 
 <style>
 body {
-    margin: 0;
-    padding: 0;
-    background-color: #f5f1e8;
-    font-family: Arial, sans-serif;
-    text-align: center;
+  margin: 0;
+  padding: 0;
+  background: #f5f1e8;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  color: #444;
 }
 
 .header {
-    padding: 30px 20px 10px;
+  padding: 28px 20px 20px;
 }
 
 .header img {
-    max-width: 220px;
-    width: 70%;
+  max-width: 220px;
+  width: 70%;
 }
 
 .intro {
-    color: #4a4a4a;
-    font-size: 18px;
-    margin-bottom: 30px;
+  font-size: 18px;
+  color: #555;
+  margin-top: 12px;
 }
 
 .book-page {
-    margin: 0 auto 25px auto;
-    width: 100%;
+  margin: 0 auto 26px;
+  width: 100%;
 }
 
 .book-page img {
-    width: 95%;
-    max-width: 900px;
-    border-radius: 8px;
-    box-shadow: 0 3px 12px rgba(0,0,0,0.12);
+  width: 95%;
+  max-width: 900px;
+  border-radius: 8px;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.14);
 }
 
 .footer {
-    padding: 40px 20px 60px;
-    color: #555;
+  padding: 50px 20px 70px;
+  color: #555;
 }
 
-.footer a {
-    display: inline-block;
-    margin-top: 15px;
-    background: #ff914d;
-    color: white;
-    text-decoration: none;
-    padding: 14px 28px;
-    border-radius: 30px;
-    font-weight: bold;
+.footer h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+  color: #444;
 }
 
-.footer a:hover {
-    opacity: 0.9;
+.footer p {
+  font-size: 17px;
+  margin-bottom: 12px;
 }
 
-    .resource-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(220px, 1fr));
-  gap: 14px;
-  max-width: 620px;
-  margin: 25px auto;
+.resource-note {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 26px;
 }
 
-.resource-grid a {
+.resource-button {
   background: #ff914d;
   color: white;
   text-decoration: none;
-  padding: 13px 18px;
-  border-radius: 24px;
+  padding: 15px 26px;
+  border-radius: 30px;
   font-weight: bold;
   display: block;
-  margin: 20px auto;
+  width: fit-content;
+  margin: 22px auto;
   text-align: center;
 }
 
@@ -89,87 +85,85 @@ body {
   padding: 15px 26px;
   border-radius: 30px;
   font-weight: bold;
-  display: inline-block;
-  margin: 20px auto;
+  display: block;
+  width: fit-content;
+  margin: 22px auto;
   text-align: center;
 }
 
-@media (max-width: 600px) {
-  .resource-grid {
-    grid-template-columns: 1fr;
-  }
-}
-.small {
-    margin-top: 25px;
-    font-size: 13px;
-    color: #777;
+.footer a:hover {
+  opacity: 0.9;
 }
 
-/* Basic protection */
+.small {
+  margin-top: 32px;
+  font-size: 13px;
+  color: #777;
+}
+
+/* Basic image protection */
 img {
-    -webkit-user-drag: none;
-    user-select: none;
-    pointer-events: none;
+  -webkit-user-drag: none;
+  user-select: none;
+  pointer-events: none;
 }
 </style>
 </head>
 
-<body>
+<body oncontextmenu="return false;">
 
 <div class="header">
-    <img src="little-planet-books-logo.png" alt="Little Planet Helpers Logo">
-    <div class="intro">
-        Free Read-Aloud Edition
-    </div>
+  <img src="little-planet-books-logo.png" alt="Little Planet Books Logo">
+  <div class="intro">
+    Free Read-Aloud Edition
+  </div>
 </div>
 
 <div id="book-container"></div>
 
 <div class="footer">
-   <h2>Free Educator Resources</h2>
+  <h2>Free Educator Resources</h2>
 
-<p>
-Download printable activities for home, childcare or classroom use.
-</p>
+  <p>
+    Download the complete printable activity pack inspired by
+    <strong>Kimmy and the Little Planet Helpers</strong>.
+  </p>
 
-<div class="resource-grid">
+  <p class="resource-note">
+    Suitable for ages 3–8 • Home • Childcare • Classroom use
+  </p>
 
-<a href="Book1-Educator-Pack/BK1-Educator-Pack.pdf" target="_blank">
-  Download the Free Educator Kit
-</a>
+  <a class="resource-button" href="Book1-Educator-Pack/BK1-Educator-Pack.pdf" target="_blank">
+    Download Free Educator Activity Pack
+  </a>
 
-</div>
+  <a class="amazon-button" href="https://www.amazon.com.au/dp/B0GWD98S82" target="_blank">
+    View the Book on Amazon
+  </a>
 
-<br>
-
-<a class="amazon-button"
-href="https://www.amazon.com.au/dp/B0GWD98S82"
-target="_blank">
-View the Book on Amazon
-</a>
-
-    <div class="small">
-        © Little Planet Books
-    </div>
+  <div class="small">
+    © Little Planet Books
+  </div>
 </div>
 
 <script>
-const totalPages = 37; // CHANGE THIS if needed
+const totalPages = 37;
 
 const container = document.getElementById('book-container');
 
 for (let i = 1; i <= totalPages; i++) {
+  let pageNumber = i.toString().padStart(2, '0');
 
-    let pageNumber = i.toString().padStart(2, '0');
+  let pageDiv = document.createElement('div');
+  pageDiv.className = 'book-page';
 
-    let pageDiv = document.createElement('div');
-    pageDiv.className = 'book-page';
+  let img = document.createElement('img');
+  img.src = `book-webp/Image${pageNumber}.webp`;
+  img.alt = `Kimmy and the Little Planet Helpers page ${i}`;
+  img.loading = "lazy";
 
-    let img = document.createElement('img');
-    img.src = `book-webp/Image${pageNumber}.webp`;
-
-    pageDiv.appendChild(img);
-    container.appendChild(pageDiv);
+  pageDiv.appendChild(img);
+  container.appendChild(pageDiv);
 }
 </script>
 
