@@ -1,1 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Read Kimmy and the Little Planet Helpers</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f5f1e8;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.header {
+    padding: 30px 20px 10px;
+}
+
+.header img {
+    max-width: 220px;
+    width: 70%;
+}
+
+.intro {
+    color: #4a4a4a;
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.book-page {
+    margin: 0 auto 25px auto;
+    width: 100%;
+}
+
+.book-page img {
+    width: 95%;
+    max-width: 900px;
+    border-radius: 8px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.12);
+}
+
+.footer {
+    padding: 40px 20px 60px;
+    color: #555;
+}
+
+.footer a {
+    display: inline-block;
+    margin-top: 15px;
+    background: #ff914d;
+    color: white;
+    text-decoration: none;
+    padding: 14px 28px;
+    border-radius: 30px;
+    font-weight: bold;
+}
+
+.footer a:hover {
+    opacity: 0.9;
+}
+
+.small {
+    margin-top: 25px;
+    font-size: 13px;
+    color: #777;
+}
+
+/* Basic protection */
+img {
+    -webkit-user-drag: none;
+    user-select: none;
+    pointer-events: none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <img src="LPH Logo.png" alt="Little Planet Helpers Logo">
+    <div class="intro">
+        Free Read-Aloud Edition
+    </div>
+</div>
+
+<div id="book-container"></div>
+
+<div class="footer">
+    <h2>Enjoyed the story?</h2>
+
+    <p>
+        Download the free Educator Activity Pack and discover more Little Planet Helpers resources.
+    </p>
+
+    <a href="https://www.amazon.com.au/dp/B0GWD98S82">
+        View the Book
+    </a>
+
+    <div class="small">
+        © Little Planet Books
+    </div>
+</div>
+
+<script>
+const totalPages = 37; // CHANGE THIS if needed
+
+const container = document.getElementById('book-container');
+
+for (let i = 1; i <= totalPages; i++) {
+
+    let pageNumber = i.toString().padStart(2, '0');
+
+    let pageDiv = document.createElement('div');
+    pageDiv.className = 'book-page';
+
+    let img = document.createElement('img');
+    img.src = `book-webp/Image${pageNumber}.webp`;
+
+    pageDiv.appendChild(img);
+    container.appendChild(pageDiv);
+}
+</script>
+
+</body>
+</html>
