@@ -16,10 +16,6 @@
   box-sizing:border-box;
 }
 
-html{
-  scroll-behavior:smooth;
-}
-
 body{
   font-family:'Baloo 2', cursive;
   background:#f6f1e7;
@@ -33,7 +29,7 @@ HEADER
 
 header{
   background:#b9d96b;
-  padding:22px 40px;
+  padding:20px 40px;
   position:sticky;
   top:0;
   z-index:1000;
@@ -50,7 +46,7 @@ header{
 }
 
 .logo img{
-  width:170px;
+  width:180px;
   display:block;
 }
 
@@ -67,7 +63,6 @@ header{
   color:#2f2227;
   font-size:18px;
   font-weight:700;
-  transition:0.2s;
 }
 
 .nav-links a:hover{
@@ -83,20 +78,14 @@ header{
   font-size:18px;
   font-weight:700;
   box-shadow:0 8px 20px rgba(255,138,61,0.25);
-  transition:0.2s;
-  white-space:nowrap;
-}
-
-.order-btn:hover{
-  transform:translateY(-2px);
 }
 
 /* =========================
-SECTION
+GENERAL
 ========================= */
 
 .section{
-  padding:90px 30px;
+  padding:80px 30px;
 }
 
 .container{
@@ -114,26 +103,26 @@ HERO
 }
 
 .hero-logo{
-  width:280px;
-  margin-bottom:30px;
+  width:260px;
+  margin-bottom:25px;
 }
 
 .hero h1{
-  font-size:68px;
+  font-size:66px;
   line-height:1;
-  margin-bottom:24px;
+  margin-bottom:20px;
 }
 
 .hero p{
   font-size:28px;
   max-width:900px;
-  margin:0 auto 20px;
+  margin:0 auto 18px;
 }
 
 .hero-small{
   font-size:22px !important;
   opacity:0.8;
-  margin-bottom:45px !important;
+  margin-bottom:40px !important;
 }
 
 /* =========================
@@ -143,14 +132,14 @@ BUTTONS
 .button-row{
   display:flex;
   justify-content:center;
-  gap:20px;
+  gap:18px;
   flex-wrap:wrap;
 }
 
 .btn{
   display:inline-block;
   text-decoration:none;
-  padding:16px 34px;
+  padding:15px 32px;
   border-radius:40px;
   font-size:20px;
   font-weight:700;
@@ -164,19 +153,16 @@ BUTTONS
 .read-btn{
   background:#1560b6;
   color:white;
-  box-shadow:0 8px 20px rgba(21,96,182,0.25);
 }
 
 .download-btn{
   background:#59c25f;
   color:white;
-  box-shadow:0 8px 20px rgba(89,194,95,0.25);
 }
 
 .buy-btn{
   background:#ff8a3d;
   color:white;
-  box-shadow:0 8px 20px rgba(255,138,61,0.25);
 }
 
 /* =========================
@@ -186,7 +172,7 @@ RESOURCE SECTION
 .resources{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:50px;
+  gap:60px;
   align-items:center;
 }
 
@@ -227,26 +213,26 @@ FEATURES
 
 .features h2{
   text-align:center;
-  font-size:60px;
-  margin-bottom:60px;
+  font-size:58px;
+  margin-bottom:55px;
 }
 
 .feature-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:30px;
+  gap:28px;
 }
 
 .feature-card{
   background:#f6f1e7;
-  border-radius:26px;
+  border-radius:24px;
   padding:35px;
   text-align:center;
 }
 
 .feature-card h3{
   font-size:34px;
-  margin-bottom:18px;
+  margin-bottom:16px;
   color:#d66b2b;
 }
 
@@ -288,11 +274,11 @@ MOBILE
   }
 
   .hero h1{
-    font-size:52px;
+    font-size:48px;
   }
 
   .resource-content h2{
-    font-size:46px;
+    font-size:44px;
   }
 
 }
@@ -305,7 +291,7 @@ MOBILE
 
   .nav{
     flex-direction:column;
-    gap:20px;
+    gap:18px;
   }
 
   .logo img{
@@ -332,11 +318,11 @@ MOBILE
   }
 
   .hero-logo{
-    width:220px;
+    width:210px;
   }
 
   .hero h1{
-    font-size:42px;
+    font-size:40px;
   }
 
   .hero p{
@@ -380,7 +366,7 @@ MOBILE
   <div class="nav">
 
     <a href="index.html" class="logo">
-      <img src="kimmy-logo.png" alt="Kimmy and the Little Planet Helpers">
+      <img src="logo.png" alt="Kimmy and the Little Planet Helpers">
     </a>
 
     <div class="nav-links">
@@ -401,7 +387,7 @@ MOBILE
 
   <div class="container">
 
-    <img class="hero-logo" src="kimmy-logo.png" alt="Kimmy Logo">
+    <img class="hero-logo" src="logo.png" alt="Kimmy Logo">
 
     <h1>Free Educator Resources</h1>
 
@@ -419,7 +405,7 @@ MOBILE
         Read Book 1 Online Free
       </a>
 
-      <a class="btn download-btn" href="Kimmy Educator Pack.pdf" download>
+      <a class="btn download-btn" href="Book1-Educator-Pack/BK1-Educator-Pack.pdf" download>
         Download Activity Pack
       </a>
 
@@ -438,7 +424,7 @@ MOBILE
   <div class="container resources">
 
     <div class="resource-image">
-      <img src="educator-pack-cover.jpg" alt="Educator Activity Pack">
+      <img src="EdPackCover.jpg" alt="Educator Activity Pack">
     </div>
 
     <div class="resource-content">
@@ -502,7 +488,7 @@ MOBILE
 
 <footer>
 
-  <img src="Little Planet Books Logo.png" alt="Little Planet Books">
+  <img src="little-planet-books-logo.png" alt="Little Planet Books">
 
   <p>© Little Planet Books</p>
 
