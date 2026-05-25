@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Educator Resources | Kimmy and the Little Planet Helpers</title>
 
@@ -11,349 +11,253 @@
 <style>
 
 *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
 body{
-  font-family:'Baloo 2', cursive;
-  background:#f6f1e7;
-  color:#2f2227;
-  line-height:1.5;
+font-family:'Baloo 2', cursive;
+background:#f6f1e7;
+color:#2e1f25;
+overflow-x:hidden;
 }
 
-/* =========================
-HEADER
-========================= */
+img{
+max-width:100%;
+display:block;
+}
+
+a{
+text-decoration:none;
+}
 
 header{
-  background:#b9d96b;
-  padding:20px 40px;
-  position:sticky;
-  top:0;
-  z-index:1000;
-  box-shadow:0 2px 10px rgba(0,0,0,0.05);
+position:sticky;
+top:0;
+z-index:999;
+background:#b9d86a;
+padding:18px 5%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+transition:transform .35s ease;
 }
 
-.nav{
-  max-width:1250px;
-  margin:auto;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:30px;
+header.hide-header{
+transform:translateY(-100%);
 }
 
 .logo img{
-  width:180px;
-  display:block;
+width:170px;
 }
 
-.nav-links{
-  display:flex;
-  align-items:center;
-  gap:34px;
-  flex-wrap:wrap;
-  justify-content:center;
+nav{
+display:flex;
+gap:34px;
+align-items:center;
 }
 
-.nav-links a{
-  text-decoration:none;
-  color:#2f2227;
-  font-size:18px;
-  font-weight:700;
-}
-
-.nav-links a:hover{
-  opacity:0.7;
+nav a{
+font-size:1.1rem;
+font-weight:700;
+color:#2e1f25;
 }
 
 .order-btn{
-  background:#ff8a3d;
-  color:white;
-  text-decoration:none;
-  padding:14px 30px;
-  border-radius:40px;
-  font-size:18px;
-  font-weight:700;
-  box-shadow:0 8px 20px rgba(255,138,61,0.25);
+background:#ff9138;
+color:white;
+padding:14px 28px;
+border-radius:40px;
+font-weight:700;
 }
-
-/* =========================
-GENERAL
-========================= */
-
-.section{
-  padding:80px 30px;
-}
-
-.container{
-  max-width:1200px;
-  margin:auto;
-}
-
-/* =========================
-HERO
-========================= */
 
 .hero{
-  background:#d8ecb3;
-  text-align:center;
+background:#cbe69b;
+padding:70px 7%;
+text-align:center;
 }
 
 .hero-logo{
-  width:260px;
-  margin-bottom:25px;
+width:220px;
+margin:auto auto 40px;
 }
 
 .hero h1{
-  font-size:66px;
-  line-height:1;
-  margin-bottom:20px;
+font-size:4.5rem;
+margin-bottom:24px;
 }
 
 .hero p{
-  font-size:28px;
-  max-width:900px;
-  margin:0 auto 18px;
+font-size:1.5rem;
+max-width:900px;
+margin:auto auto 20px;
 }
 
-.hero-small{
-  font-size:22px !important;
-  opacity:0.8;
-  margin-bottom:40px !important;
-}
-
-/* =========================
-BUTTONS
-========================= */
-
-.button-row{
-  display:flex;
-  justify-content:center;
-  gap:18px;
-  flex-wrap:wrap;
+.hero-buttons{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+margin-top:35px;
 }
 
 .btn{
-  display:inline-block;
-  text-decoration:none;
-  padding:15px 32px;
-  border-radius:40px;
-  font-size:20px;
-  font-weight:700;
-  transition:0.2s;
-}
-
-.btn:hover{
-  transform:translateY(-2px);
+padding:16px 28px;
+border-radius:40px;
+font-size:1.05rem;
+font-weight:700;
+display:inline-block;
 }
 
 .read-btn{
-  background:#1560b6;
-  color:white;
+background:#1f67c7;
+color:white;
 }
 
 .download-btn{
-  background:#59c25f;
-  color:white;
+background:#58c863;
+color:white;
 }
 
 .buy-btn{
-  background:#ff8a3d;
-  color:white;
+background:#ff9138;
+color:white;
 }
 
-/* =========================
-RESOURCE SECTION
-========================= */
+.resource-section{
+padding:90px 7%;
+}
 
-.resources{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:60px;
-  align-items:center;
+.resource-inner{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:60px;
+align-items:center;
+max-width:1300px;
+margin:auto;
 }
 
 .resource-image img{
-  width:100%;
-  max-width:520px;
-  border-radius:28px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.12);
+border-radius:30px;
+box-shadow:0 10px 30px rgba(0,0,0,0.12);
 }
 
-.resource-content h2{
-  font-size:60px;
-  line-height:1;
-  margin-bottom:24px;
+.resource-text h2{
+font-size:4rem;
+margin-bottom:24px;
 }
 
-.resource-content p{
-  font-size:26px;
-  margin-bottom:24px;
+.resource-text p{
+font-size:1.35rem;
+margin-bottom:24px;
 }
 
-.resource-content ul{
-  padding-left:24px;
+.resource-text li{
+font-size:1.2rem;
+margin-bottom:12px;
 }
-
-.resource-content li{
-  font-size:24px;
-  margin-bottom:16px;
-}
-
-/* =========================
-FEATURES
-========================= */
 
 .features{
-  background:#ffffff;
-}
-
-.features h2{
-  text-align:center;
-  font-size:58px;
-  margin-bottom:55px;
+background:#f8f8f8;
+padding:90px 7%;
 }
 
 .feature-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:28px;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:30px;
+max-width:1300px;
+margin:auto;
 }
 
 .feature-card{
-  background:#f6f1e7;
-  border-radius:24px;
-  padding:35px;
-  text-align:center;
+background:#f6f1e7;
+padding:40px;
+border-radius:28px;
+text-align:center;
 }
 
 .feature-card h3{
-  font-size:34px;
-  margin-bottom:16px;
-  color:#d66b2b;
+font-size:2rem;
+color:#d46d2d;
+margin-bottom:18px;
 }
 
 .feature-card p{
-  font-size:22px;
+font-size:1.2rem;
 }
 
-/* =========================
-FOOTER
-========================= */
-
-footer{
-  background:#efe7d8;
-  text-align:center;
-  padding:70px 20px;
+.footer{
+background:#efe5d5;
+padding:60px 20px;
+text-align:center;
 }
 
-footer img{
-  width:180px;
-  margin-bottom:18px;
+.footer img{
+width:180px;
+margin:auto auto 20px;
 }
 
-footer p{
-  font-size:20px;
+@media(max-width:900px){
+
+.resource-inner,
+.feature-grid{
+grid-template-columns:1fr;
 }
-
-/* =========================
-MOBILE
-========================= */
-
-@media (max-width:900px){
-
-  .resources{
-    grid-template-columns:1fr;
-  }
-
-  .feature-grid{
-    grid-template-columns:1fr;
-  }
-
-  .hero h1{
-    font-size:48px;
-  }
-
-  .resource-content h2{
-    font-size:44px;
-  }
 
 }
 
-@media (max-width:600px){
+@media(max-width:600px){
 
-  header{
-    padding:18px 18px 24px;
-  }
+header{
+flex-direction:column;
+gap:14px;
+padding:14px 18px;
+}
 
-  .nav{
-    flex-direction:column;
-    gap:18px;
-  }
+.logo img{
+width:145px;
+}
 
-  .logo img{
-    width:190px;
-  }
+nav{
+gap:12px 18px;
+flex-wrap:wrap;
+justify-content:center;
+}
 
-  .nav-links{
-    gap:10px 18px;
-    max-width:320px;
-  }
+nav a{
+font-size:0.95rem;
+}
 
-  .nav-links a{
-    font-size:15px;
-    line-height:1.15;
-  }
+.hero{
+padding:50px 24px;
+}
 
-  .order-btn{
-    font-size:15px;
-    padding:12px 26px;
-  }
+.hero-logo{
+width:180px;
+}
 
-  .section{
-    padding:60px 20px;
-  }
+.hero h1{
+font-size:3rem;
+}
 
-  .hero-logo{
-    width:210px;
-  }
+.hero p{
+font-size:1.2rem;
+}
 
-  .hero h1{
-    font-size:40px;
-  }
+.btn{
+padding:14px 22px;
+font-size:1rem;
+}
 
-  .hero p{
-    font-size:22px;
-  }
+.resource-text h2{
+font-size:3rem;
+}
 
-  .hero-small{
-    font-size:18px !important;
-  }
-
-  .btn{
-    width:100%;
-    max-width:340px;
-    text-align:center;
-    font-size:18px;
-    padding:15px 24px;
-  }
-
-  .resource-content h2{
-    font-size:40px;
-  }
-
-  .resource-content p,
-  .resource-content li,
-  .feature-card p{
-    font-size:20px;
-  }
-
-  .features h2{
-    font-size:42px;
-  }
+.feature-card{
+padding:28px;
+}
 
 }
 
@@ -363,136 +267,139 @@ MOBILE
 <body>
 
 <header>
-  <div class="nav">
 
-    <a href="index.html" class="logo">
-      <img src="logo.png" alt="Kimmy and the Little Planet Helpers">
-    </a>
+<div class="logo">
+<img src="Kimmy Logo.png" alt="Kimmy">
+</div>
 
-    <div class="nav-links">
-      <a href="index.html#about">About Kimmy</a>
-      <a href="index.html#books">Books</a>
-      <a href="index.html#testimonials">Testimonials</a>
-      <a href="index.html#planet">Help Save Our Planet</a>
-    </div>
+<nav>
+<a href="index.html#about">About Kimmy</a>
+<a href="index.html#books">Books</a>
+<a href="index.html#planet">Help Save Our Planet</a>
+</nav>
 
-    <a class="order-btn" href="https://www.amazon.com.au/dp/B0H1HHVQQZ?binding=paperback&ref=dbs_dp_sirpi" target="_blank">
-      Order a Book
-    </a>
+<a class="order-btn" href="https://www.amazon.com.au/dp/B0H1HHVQQZ?binding=paperback&ref=dbs_dp_sirpi" target="_blank">
+Order a Book
+</a>
 
-  </div>
 </header>
 
-<section class="section hero">
+<section class="hero">
 
-  <div class="container">
+<img class="hero-logo" src="Kimmy Logo.png" alt="Kimmy Logo">
 
-    <img class="hero-logo" src="logo.png" alt="Kimmy Logo">
+<h1>Free Educator Resources</h1>
 
-    <h1>Free Educator Resources</h1>
+<p>
+Read the story online, then download printable classroom and home learning resources inspired by Kimmy and the Little Planet Helpers.
+</p>
 
-    <p>
-      Read the story online, then download printable classroom and home learning activities inspired by Kimmy and the Little Planet Helpers.
-    </p>
+<div class="hero-buttons">
 
-    <p class="hero-small">
-      Suitable for ages 3–8 • Home • Childcare • Classroom use
-    </p>
+<a class="btn read-btn" href="read.html">
+Read Book 1 Online Free
+</a>
 
-    <div class="button-row">
+<a class="btn download-btn" href="Educator Activity Pack.pdf" target="_blank">
+Download Activity Pack
+</a>
 
-      <a class="btn read-btn" href="read.html">
-        Read Book 1 Online Free
-      </a>
+<a class="btn buy-btn" href="https://www.amazon.com.au/dp/B0H1HHVQQZ?binding=paperback&ref=dbs_dp_sirpi" target="_blank">
+Buy the Books
+</a>
 
-      <a class="btn download-btn" href="Book1-Educator-Pack/BK1-Educator-Pack.pdf" download>
-        Download Activity Pack
-      </a>
-
-      <a class="btn buy-btn" href="https://www.amazon.com.au/dp/B0H1HHVQQZ?binding=paperback&ref=dbs_dp_sirpi" target="_blank">
-        Buy the Books
-      </a>
-
-    </div>
-
-  </div>
+</div>
 
 </section>
 
-<section class="section">
+<section class="resource-section">
 
-  <div class="container resources">
+<div class="resource-inner">
 
-    <div class="resource-image">
-      <img src="EdPackCover.jpg" alt="Educator Activity Pack">
-    </div>
+<div class="resource-image">
+<img src="Educator Activity Pack Cover.jpg" alt="Educator Activity Pack">
+</div>
 
-    <div class="resource-content">
+<div class="resource-text">
 
-      <h2>What’s Included?</h2>
+<h2>What’s Included?</h2>
 
-      <p>
-        The Educator Activity Pack helps children explore environmental care,
-        kindness, teamwork and how small actions can make a big difference.
-      </p>
+<p>
+The Educator Activity Pack helps children explore kindness, teamwork, sustainability and caring for the environment.
+</p>
 
-      <ul>
-        <li>Printable colouring activities</li>
-        <li>Discussion prompts and learning ideas</li>
-        <li>Classroom and home activities</li>
-        <li>Environmental awareness worksheets</li>
-        <li>Age-appropriate learning resources</li>
-        <li>Simple sustainability conversations for children</li>
-      </ul>
+<ul>
+<li>Printable colouring activities</li>
+<li>Discussion prompts and learning ideas</li>
+<li>Classroom and home activities</li>
+<li>Environmental awareness worksheets</li>
+<li>Age-appropriate learning resources</li>
+<li>Simple sustainability conversations for children</li>
+</ul>
 
-    </div>
+</div>
 
-  </div>
-
-</section>
-
-<section class="section features">
-
-  <div class="container">
-
-    <h2>Designed for Teachers, Parents & Childcare</h2>
-
-    <div class="feature-grid">
-
-      <div class="feature-card">
-        <h3>Easy to Use</h3>
-        <p>
-          Simple printable activities designed to fit naturally into home and classroom learning.
-        </p>
-      </div>
-
-      <div class="feature-card">
-        <h3>Positive Messages</h3>
-        <p>
-          Encourages kindness, teamwork, environmental care and thoughtful discussion.
-        </p>
-      </div>
-
-      <div class="feature-card">
-        <h3>Fun & Engaging</h3>
-        <p>
-          Bright illustrations and practical activities help children connect with the story.
-        </p>
-      </div>
-
-    </div>
-
-  </div>
+</div>
 
 </section>
 
-<footer>
+<section class="features">
 
-  <img src="little-planet-books-logo.png" alt="Little Planet Books">
+<div class="feature-grid">
 
-  <p>© Little Planet Books</p>
+<div class="feature-card">
+<h3>Easy to Use</h3>
+<p>
+Simple printable activities designed to fit naturally into home and classroom learning.
+</p>
+</div>
 
-</footer>
+<div class="feature-card">
+<h3>Positive Messages</h3>
+<p>
+Encourages kindness, teamwork and environmental care through thoughtful discussion.
+</p>
+</div>
+
+<div class="feature-card">
+<h3>Fun & Engaging</h3>
+<p>
+Bright illustrations and practical activities help children connect with the story.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="footer">
+
+<img src="Little Planet Books Logo.png" alt="Little Planet Books">
+
+<p>© Little Planet Books</p>
+
+</section>
+
+<script>
+
+let lastScroll = 0;
+const header = document.querySelector("header");
+
+window.addEventListener("scroll", () => {
+
+const currentScroll = window.pageYOffset;
+
+if(currentScroll > lastScroll && currentScroll > 120){
+header.classList.add("hide-header");
+}else{
+header.classList.remove("hide-header");
+}
+
+lastScroll = currentScroll;
+
+});
+
+</script>
 
 </body>
 </html>
