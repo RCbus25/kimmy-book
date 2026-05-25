@@ -1,491 +1,687 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
 <title>Kimmy and the Little Planet Helpers</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700&display=swap" rel="stylesheet">
+
 <style>
-body {
-  margin: 0;
-  font-family: "Comic Sans MS", "Trebuchet MS", Arial, sans-serif;
-  background: #fff8ea;
-  color: #2f2529;
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
-html {
-  scroll-behavior: smooth;
+html{
+  scroll-behavior:smooth;
 }
 
-nav {
-  background: #b8db6b;
-  padding: 26px 10%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+body{
+  font-family:'Baloo 2', cursive;
+  background:#f6f1e7;
+  color:#2f2227;
+  line-height:1.5;
 }
 
-nav img {
-  width: 150px;
+/* =========================
+HEADER
+========================= */
+
+header{
+  background:#b9d96b;
+  padding:22px 40px;
+  position:sticky;
+  top:0;
+  z-index:1000;
+  box-shadow:0 2px 10px rgba(0,0,0,0.05);
 }
 
-nav .links a {
-  margin: 0 14px;
-  color: #2f2529;
-  text-decoration: none;
-  font-weight: bold;
+.nav{
+  max-width:1250px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:30px;
 }
 
-.btn {
-  display: inline-block;
-  background: #ff8a3d;
-  color: white;
-  padding: 14px 24px;
-  border-radius: 28px;
-  text-decoration: none;
-  font-weight: bold;
-  box-shadow: 0 5px 12px rgba(0,0,0,0.16);
-  margin-top: 18px;
+.logo img{
+  width:170px;
+  display:block;
 }
 
-.btn:hover {
-  opacity: 0.9;
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:34px;
+  flex-wrap:wrap;
+  justify-content:center;
 }
 
-.buy-btn {
-  background: #ff8a3d;
+.nav-links a{
+  text-decoration:none;
+  color:#2f2227;
+  font-size:18px;
+  font-weight:700;
+  transition:0.2s;
 }
 
-.read-btn {
-  background: #0b4f7a;
+.nav-links a:hover{
+  opacity:0.7;
 }
 
-.educator-btn {
-  background: #5aa85a;
+.order-btn{
+  background:#ff8a3d;
+  color:white;
+  text-decoration:none;
+  padding:14px 30px;
+  border-radius:40px;
+  font-size:18px;
+  font-weight:700;
+  box-shadow:0 8px 20px rgba(255,138,61,0.25);
+  transition:0.2s;
+  white-space:nowrap;
 }
 
-section {
-  padding: 70px 10%;
+.order-btn:hover{
+  transform:translateY(-2px);
 }
 
-.hero,
-.split {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 70px;
-  align-items: center;
+/* =========================
+SECTIONS
+========================= */
+
+.section{
+  padding:90px 30px;
 }
 
-.hero {
-  background: #fff8ea;
+.container{
+  max-width:1200px;
+  margin:auto;
 }
 
-.hero h1 {
-  font-size: 56px;
-  line-height: 1.05;
-  margin-bottom: 20px;
+.hero{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+  align-items:center;
 }
 
-.hero h2 {
-  font-size: 30px;
-  color: #c75a24;
+.hero-text h1{
+  font-size:74px;
+  line-height:0.95;
+  margin-bottom:25px;
 }
 
-p {
-  font-size: 21px;
-  line-height: 1.55;
+.hero-text h2{
+  font-size:42px;
+  color:#d66b2b;
+  line-height:1.1;
+  margin-bottom:28px;
 }
 
-.hero img,
-.split img,
-.book-card img {
-  width: 100%;
-  border-radius: 14px;
-  box-shadow: 0 6px 22px rgba(0,0,0,0.16);
+.hero-text p{
+  font-size:24px;
+  margin-bottom:20px;
 }
 
-.logo-section {
-  text-align: center;
-  margin-bottom: 30px;
+.hero-image img{
+  width:100%;
+  border-radius:28px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.12);
 }
 
-.logo-section img {
-  width: 280px;
-  box-shadow: none;
+/* =========================
+BUTTONS
+========================= */
+
+.btn{
+  display:inline-block;
+  text-decoration:none;
+  padding:14px 30px;
+  border-radius:40px;
+  font-size:18px;
+  font-weight:700;
+  margin-top:10px;
+  transition:0.2s;
 }
 
-.cream {
-  background: #fff8ea;
+.buy-btn{
+  background:#ff8a3d;
+  color:white;
+  box-shadow:0 8px 20px rgba(255,138,61,0.25);
 }
 
-.green {
-  background: #acd095;
+.buy-btn:hover{
+  transform:translateY(-2px);
 }
 
-.white {
-  background: white;
+/* =========================
+BOOKS
+========================= */
+
+.books-section{
+  background:#d8ecb3;
 }
 
-.lime {
-  background: #b8db6b;
-  text-align: center;
+.books-title{
+  text-align:center;
+  margin-bottom:60px;
 }
 
-h2 {
-  font-size: 42px;
-  margin-top: 0;
+.books-title img{
+  width:260px;
+  margin-bottom:18px;
 }
 
-.orange {
-  color: #ef7f38;
+.books-title h2{
+  font-size:58px;
 }
 
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 18px;
+.book-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
 }
 
-.gallery-grid img {
-  width: 100%;
-  border-radius: 14px;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.14);
+.book-card{
+  background:#f6f1e7;
+  padding:35px;
+  border-radius:28px;
+  text-align:center;
+  box-shadow:0 8px 25px rgba(0,0,0,0.06);
 }
 
-.testimonials {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 45px;
-  text-align: center;
+.book-card img{
+  width:100%;
+  max-width:420px;
+  aspect-ratio:2/3;
+  object-fit:cover;
+  border-radius:24px;
+  margin-bottom:22px;
 }
 
-.quote-mark {
-  font-size: 50px;
-  color: #b8db6b;
+.book-card h2{
+  font-size:46px;
+  line-height:1.05;
+  margin-bottom:18px;
 }
 
-.book-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 55px;
-  align-items: start;
+.book-card p{
+  font-size:23px;
+  margin-bottom:24px;
 }
 
-.book-card {
-  background: #fff8ea;
-  border-radius: 18px;
-  padding: 28px;
-  box-shadow: 0 5px 18px rgba(0,0,0,0.12);
-  text-align: center;
+/* =========================
+ABOUT
+========================= */
+
+.about{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+  align-items:center;
 }
 
-.resource-box {
-  max-width: 850px;
-  margin: auto;
-  text-align: center;
+.about img{
+  width:100%;
+  border-radius:28px;
 }
 
-.resource-note {
-  font-size: 16px;
-  color: #555;
+.about-text img{
+  width:250px;
+  margin-bottom:24px;
 }
 
-footer {
-  background: #fff8ea;
-  text-align: center;
-  padding: 60px 20px 40px;
+.about-text p{
+  font-size:24px;
+  margin-bottom:24px;
 }
 
-footer img {
-  width: 170px;
-  margin-bottom: 20px;
+/* =========================
+SAVE PLANET
+========================= */
+
+.planet{
+  background:#b9d96b;
+  text-align:center;
 }
 
-footer p {
-  font-size: 15px;
-  letter-spacing: 1px;
+.planet h2{
+  font-size:68px;
+  margin-bottom:18px;
 }
 
-.floating-buy {
-  position: fixed;
-  right: 28px;
-  bottom: 28px;
-  background: #ff8a3d;
-  color: white;
-  padding: 15px 24px;
-  border-radius: 28px;
-  text-decoration: none;
-  font-weight: bold;
-  box-shadow: 0 5px 14px rgba(0,0,0,0.25);
-  z-index: 101;
+.planet h3{
+  font-size:38px;
+  color:#d66b2b;
+  margin-bottom:60px;
 }
 
-@media (max-width: 850px) {
-  nav {
-    flex-direction: column;
-    gap: 15px;
-  }
+.planet-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:50px;
+  text-align:left;
+}
+
+.planet-box{
+  background:white;
+  border-radius:26px;
+  padding:35px;
+}
+
+.planet-box h4{
+  font-size:42px;
+  color:#d66b2b;
+  margin-bottom:22px;
+}
+
+.planet-box p,
+.planet-box li{
+  font-size:24px;
+  margin-bottom:18px;
+}
+
+/* =========================
+TESTIMONIALS
+========================= */
+
+.testimonials{
+  background:#f6f1e7;
+}
+
+.testimonials h2{
+  text-align:center;
+  font-size:60px;
+  margin-bottom:60px;
+}
+
+.testimonial-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:30px;
+}
+
+.testimonial{
+  background:white;
+  border-radius:24px;
+  overflow:hidden;
+  box-shadow:0 8px 25px rgba(0,0,0,0.06);
+}
+
+.testimonial img{
+  width:100%;
+  height:280px;
+  object-fit:cover;
+}
+
+.testimonial-content{
+  padding:28px;
+}
+
+.testimonial-content h3{
+  font-size:32px;
+  margin-bottom:14px;
+}
+
+.testimonial-content p{
+  font-size:22px;
+}
+
+/* =========================
+FOOTER
+========================= */
+
+footer{
+  background:#efe7d8;
+  text-align:center;
+  padding:70px 20px;
+}
+
+footer img{
+  width:180px;
+  margin-bottom:18px;
+}
+
+footer p{
+  font-size:20px;
+}
+
+/* =========================
+MOBILE
+========================= */
+
+@media (max-width: 900px){
 
   .hero,
-  .split,
-  .book-row {
-    grid-template-columns: 1fr;
+  .about,
+  .book-row,
+  .planet-grid,
+  .testimonial-grid{
+    grid-template-columns:1fr;
   }
 
-  .hero h1 {
-    font-size: 42px;
+  .hero-text h1{
+    font-size:56px;
   }
 
-  .gallery-grid,
-  .testimonials {
-    grid-template-columns: 1fr;
+  .hero-text h2{
+    font-size:34px;
   }
 
-  .floating-buy {
-    display: none;
+  .planet h2{
+    font-size:48px;
   }
+
 }
+
+@media (max-width: 600px){
+
+  header{
+    padding:18px 18px 24px;
+  }
+
+  .nav{
+    flex-direction:column;
+    gap:20px;
+  }
+
+  .logo img{
+    width:190px;
+  }
+
+  .nav-links{
+    gap:10px 18px;
+    max-width:320px;
+  }
+
+  .nav-links a{
+    font-size:15px;
+    line-height:1.15;
+  }
+
+  .order-btn{
+    font-size:15px;
+    padding:12px 26px;
+  }
+
+  .section{
+    padding:60px 20px;
+  }
+
+  .hero-text h1{
+    font-size:42px;
+  }
+
+  .hero-text h2{
+    font-size:30px;
+  }
+
+  .hero-text p,
+  .book-card p,
+  .about-text p,
+  .planet-box p,
+  .planet-box li,
+  .testimonial-content p{
+    font-size:20px;
+  }
+
+  .book-card h2{
+    font-size:38px;
+  }
+
+  .planet h2{
+    font-size:42px;
+  }
+
+  .planet h3{
+    font-size:28px;
+  }
+
+  .books-title h2,
+  .testimonials h2{
+    font-size:44px;
+  }
+
+}
+
 </style>
 </head>
 
 <body>
 
-<nav>
-  <a href="#top">
-    <img src="logo.png" alt="Kimmy and the Little Planet Helpers logo">
-  </a>
+<header>
+  <div class="nav">
 
-  <div class="links">
-    <a href="#about">About Kimmy</a>
-    <a href="#educator-resources">Educator Resources</a>
-    <a href="#books">Books</a>
-    <a href="#testimonials">Testimonials</a>
-    <a href="#planet">Help Save Our Planet</a>
-  </div>
-
-  <a class="btn buy-btn" href="https://www.amazon.com.au/dp/B0H1HHVQQZ?binding=paperback&ref=dbs_dp_sirpi" target="_blank">
-    Order a Book
-  </a>
-</nav>
-
-<a class="floating-buy" href="https://www.amazon.com.au/dp/B0H1HHVQQZ?binding=paperback&ref=dbs_dp_sirpi" target="_blank">
-  Buy Now
-</a>
-
-<section id="top" class="hero">
-  <div>
-    <h1>Join Kimmy’s Adventure</h1>
-    <h2>Together We Can Make a Difference</h2>
-    <p>
-      Embark on a delightful journey with Kimmy and the Little Planet Helpers,
-      a charming children’s picture book series that inspires young readers to
-      take small actions to help protect our planet.
-    </p>
-    <a class="btn buy-btn" href="https://www.amazon.com.au/dp/B0H1HHVQQZ?binding=paperback&ref=dbs_dp_sirpi" target="_blank">
-      Buy the Books
+    <a href="#" class="logo">
+      <img src="kimmy-logo.png" alt="Kimmy and the Little Planet Helpers">
     </a>
-  </div>
 
-  <div>
-    <img src="hero.jpg" alt="Kimmy and the Little Planet Helpers Book 1 cover">
-  </div>
-</section>
-
-<section id="about" class="cream split">
-  <div>
-    <div class="logo-section">
-      <img src="logo.png" alt="Kimmy logo">
+    <div class="nav-links">
+      <a href="#about">About Kimmy</a>
+      <a href="educators.html">Educator Resources</a>
+      <a href="#books">Books</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#planet">Help Save Our Planet</a>
     </div>
 
-    <h2 class="orange">Meet Kimmy</h2>
-    <p>
-      Meet Kimmy. She’s a kind-hearted girl who loves her town and her planet.
-      When she discovers litter on her favourite path, Kimmy decides it’s time
-      to take action.
-    </p>
-    <p>
-      With help from her friends and her magical sparkling bag, she begins a
-      joyful clean-up mission that inspires the whole community.
-    </p>
-    <a class="btn buy-btn" href="https://www.amazon.com.au/dp/B0H1HHVQQZ?binding=paperback&ref=dbs_dp_sirpi" target="_blank">
-      Buy the Book
+    <a class="order-btn" href="https://www.amazon.com.au/dp/B0H1HHVQQZ?binding=paperback&ref=dbs_dp_sirpi" target="_blank">
+      Order a Book
     </a>
+
   </div>
+</header>
 
-  <div>
-    <img src="meet.jpg" alt="Kimmy illustration">
-  </div>
-</section>
+<section class="section">
+  <div class="container hero">
 
-<section id="educator-resources" class="green">
-  <div class="resource-box">
-    <div class="logo-section">
-      <img src="logo.png" alt="Kimmy logo">
-    </div>
+    <div class="hero-text">
+      <h1>Join Kimmy’s Adventure</h1>
 
-    <h2>Educator Resources</h2>
+      <h2>Together We Can Make a Difference</h2>
 
-    <p>
-      Free printable classroom activities are available for educators
-      using Kimmy and the Little Planet Helpers.
-    </p>
-
-    <a class="btn educator-btn" href="educators.html">
-      View Educator Resources
-    </a>
-  </div>
-</section>
-
-<section id="books" class="white">
-  <div class="logo-section">
-    <img src="logo.png" alt="Kimmy logo">
-  </div>
-
-  <h2 style="text-align:center;">The Books</h2>
-
-  <div class="book-row">
-
-  <div class="book-card">
-    <img src="cover.jpg" alt="Kimmy and the Little Planet Helpers Book 1">
-
-    <h2>Book 1</h2>
-
-    <p>
-      Kimmy and her friends discover how small actions can help protect
-      rivers, parks, wildlife and our planet.
-    </p>
-
-    <a class="btn buy-btn"
-    href="https://www.amazon.com.au/dp/B0H1HHVQQZ?binding=paperback&ref=dbs_dp_sirpi"
-    target="_blank">
-      Buy Book 1
-    </a>
-  </div>
-
-
-  <div class="book-card">
-    <img src="Front Cover Book 2.png"
-    alt="Kimmy and the Little Planet Helpers A Day at the Beach">
-
-    <h2>Book 2: A Day at the Beach</h2>
-
-    <p>
-      Kimmy and her friends head to the beach and learn how caring for
-      the sand, sea and shoreline can help protect ocean animals.
-    </p>
-
-    <a class="btn buy-btn"
-    href="https://www.amazon.com.au/dp/B0H1HHVQQZ?binding=paperback&ref=dbs_dp_sirpi"
-    target="_blank">
-      Buy Book 2
-    </a>
-  </div>
-
-</div>
-</section>
-
-<section id="gallery" class="white">
-  <h2 style="text-align:center;">Gallery</h2>
-
-  <div class="gallery-grid">
-    <img src="gallery1.jpg" alt="Little Planet Helpers illustration 1">
-    <img src="gallery2.jpg" alt="Little Planet Helpers illustration 2">
-    <img src="gallery3.jpg" alt="Little Planet Helpers illustration 3">
-    <img src="gallery4.jpg" alt="Little Planet Helpers illustration 4">
-  </div>
-</section>
-
-<section id="testimonials" class="cream">
-  <div class="logo-section">
-    <img src="logo.png" alt="Kimmy logo">
-  </div>
-
-  <h2 style="text-align:center;">What Readers Are Saying</h2>
-
-  <div class="testimonials">
-    <div>
-      <div class="quote-mark">“</div>
-      <h3>Lily Johnson</h3>
       <p>
-        Kimmy’s story is delightful! It teaches kids the importance of caring
-        for our planet in a fun and engaging way.
+        Embark on a delightful journey with Kimmy and the Little Planet Helpers,
+        a charming children’s picture book that inspires young readers to care
+        for our planet.
       </p>
+
+      <p>
+        Discover how one small act of kindness can create a ripple effect of
+        positive change.
+      </p>
+
+      <a class="btn buy-btn" href="https://www.amazon.com.au/dp/B0H1HHVQQZ?binding=paperback&ref=dbs_dp_sirpi" target="_blank">
+        Buy the Books
+      </a>
+    </div>
+
+    <div class="hero-image">
+      <img src="cover.jpg" alt="Kimmy Book Cover">
+    </div>
+
+  </div>
+</section>
+
+<section class="section books-section" id="books">
+
+  <div class="container">
+
+    <div class="books-title">
+      <img src="kimmy-logo.png" alt="Kimmy Logo">
+      <h2>The Books</h2>
+    </div>
+
+    <div class="book-row">
+
+      <div class="book-card">
+        <img src="cover.jpg" alt="Book 1">
+        <h2>Book 1</h2>
+
+        <p>
+          Kimmy and her friends discover how small actions can help protect
+          their town, waterways and planet.
+        </p>
+
+        <a class="btn buy-btn" href="https://www.amazon.com.au/dp/B0GWD98S82" target="_blank">
+          Buy Book 1
+        </a>
+      </div>
+
+      <div class="book-card">
+        <img src="Front Cover Book 2.png" alt="Book 2">
+        <h2>Book 2:<br>A Day at the Beach</h2>
+
+        <p>
+          Kimmy and her friends head to the beach and learn how caring for the
+          sand, sea and shore can help protect ocean animals.
+        </p>
+
+        <a class="btn buy-btn" href="https://www.amazon.com.au/dp/B0H1HHVQQZ?binding=paperback&ref=dbs_dp_sirpi" target="_blank">
+          Buy Book 2
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section class="section" id="about">
+
+  <div class="container about">
+
+    <div class="about-text">
+
+      <img src="kimmy-logo.png" alt="Kimmy Logo">
+
+      <p>
+        Rogan and Kim Carroll are Sydney Northern Beaches locals who love the
+        beach and care deeply about the environment.
+      </p>
+
+      <p>
+        Inspired by everyday acts of kindness, the Kimmy stories encourage
+        children to understand that even small actions can make a big
+        difference.
+      </p>
+
+      <a class="btn buy-btn" href="https://www.amazon.com.au/dp/B0H1HHVQQZ?binding=paperback&ref=dbs_dp_sirpi" target="_blank">
+        Order a Book
+      </a>
+
     </div>
 
     <div>
-      <div class="quote-mark">“</div>
-      <h3>Mark Thompson</h3>
-      <p>
-        I bought it for the grandchildren. It’s a wonderful book that encourages
-        young readers to think about their impact on the environment.
-      </p>
+      <img src="author.jpg" alt="Rogan and Kim Carroll">
     </div>
 
-    <div>
-      <div class="quote-mark">“</div>
-      <h3>Sophie Kwan</h3>
-      <p>
-        An inspiring story that prompts discussions about environmental
-        responsibility. A must-have for every child’s bookshelf.
-      </p>
+  </div>
+
+</section>
+
+<section class="section planet" id="planet">
+
+  <div class="container">
+
+    <h2>Help Save Our Planet</h2>
+
+    <h3>Small actions can make a big difference 🌎</h3>
+
+    <div class="planet-grid">
+
+      <div class="planet-box">
+
+        <h4>What You Can Do</h4>
+
+        <ul>
+          <li>Find a bin</li>
+          <li>Take your litter with you</li>
+          <li>Pick up one extra piece</li>
+          <li>Look after nature</li>
+          <li>Recycle when you can</li>
+        </ul>
+
+      </div>
+
+      <div class="planet-box">
+
+        <h4>Did You Know?</h4>
+
+        <ul>
+          <li>Over 8 million tonnes of plastic enter the ocean each year</li>
+          <li>Most litter starts on land and travels to waterways</li>
+          <li>Plastic harms birds, turtles and sea animals</li>
+          <li>Small changes from many people can create big impact</li>
+        </ul>
+
+      </div>
+
     </div>
+
   </div>
 
-  <div style="text-align:center;">
-    <a class="btn buy-btn" href="https://www.amazon.com.au/dp/B0H1HHVQQZ?binding=paperback&ref=dbs_dp_sirpi" target="_blank">
-      Buy the Books
-    </a>
-  </div>
 </section>
 
-<section id="planet" class="lime">
-  <div class="logo-section">
-    <img src="logo.png" alt="Kimmy logo">
+<section class="section testimonials" id="testimonials">
+
+  <div class="container">
+
+    <h2>What Readers Are Saying</h2>
+
+    <div class="testimonial-grid">
+
+      <div class="testimonial">
+        <img src="gallery1.jpg" alt="">
+        <div class="testimonial-content">
+          <h3>Lily Johnson</h3>
+          <p>
+            “A delightful story that teaches children kindness, teamwork and
+            caring for the environment.”
+          </p>
+        </div>
+      </div>
+
+      <div class="testimonial">
+        <img src="gallery2.jpg" alt="">
+        <div class="testimonial-content">
+          <h3>Mark Thompson</h3>
+          <p>
+            “Beautiful illustrations and a powerful message delivered in a fun,
+            engaging way.”
+          </p>
+        </div>
+      </div>
+
+      <div class="testimonial">
+        <img src="gallery3.jpg" alt="">
+        <div class="testimonial-content">
+          <h3>Sophie Kwan</h3>
+          <p>
+            “A must-have for young readers learning how even small actions can
+            help protect our planet.”
+          </p>
+        </div>
+      </div>
+
+    </div>
+
   </div>
 
-  <h2>Help Save Our Planet</h2>
-  <h2 class="orange">Small actions can make a big difference</h2>
-</section>
-
-<section class="white split">
-  <div>
-    <h2 class="orange">What You Can Do</h2>
-    <p><strong>🗑 Find a bin</strong><br>Always put your rubbish in a bin — or take it home.</p>
-    <p><strong>🎒 Take your litter with you</strong><br>No bin? Keep it in your bag until you find one.</p>
-    <p><strong>👀 Pick up one extra piece</strong><br>Be a Little Planet Helper — pick up one piece you see.</p>
-    <p><strong>🌿 Look after nature</strong><br>Leave parks, beaches, and bushland clean.</p>
-    <p><strong>♻️ Recycle when you can</strong><br>Bottles, cans, and paper can be reused.</p>
-  </div>
-
-  <div>
-    <h2 class="orange">Why It Matters</h2>
-    <p>
-      Everything in nature is connected. When one part is harmed, it can affect many others.
-    </p>
-    <p>🌊 Most litter starts on land and travels to the ocean.</p>
-    <p>🐢 Sea animals can mistake plastic for food.</p>
-    <p>🦀 When one species is harmed, others are affected too.</p>
-    <p>🌏 Small actions today help protect tomorrow.</p>
-  </div>
-</section>
-
-<section class="lime">
-  <h2>The Good News Is</h2>
-  <h2 class="orange">
-    Small actions from people like you can help protect our planet 🌏
-  </h2>
-  <a class="btn buy-btn" href="https://www.amazon.com.au/dp/B0H1HHVQQZ?binding=paperback&ref=dbs_dp_sirpi" target="_blank">
-    Buy the Books
-  </a>
 </section>
 
 <footer>
-  <img src="little-planet-books-logo.png" alt="Little Planet Books Logo">
+
+  <img src="Little Planet Books Logo.png" alt="Little Planet Books">
+
   <p>© Little Planet Books</p>
+
 </footer>
 
 </body>
