@@ -1,1 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Educator Resources | Kimmy and the Little Planet Helpers</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'Baloo 2', cursive;
+  background:#f5f1e8;
+  color:#2d2222;
+  line-height:1.5;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+  background:#b8d86b;
+  padding:22px 40px;
+  position:sticky;
+  top:0;
+  z-index:999;
+  box-shadow:0 2px 10px rgba(0,0,0,0.06);
+}
+
+.nav{
+  max-width:1400px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:30px;
+}
+
+.logo img{
+  width:135px;
+}
+
+.nav-links{
+  display:flex;
+  gap:38px;
+  align-items:center;
+}
+
+.nav-links a{
+  text-decoration:none;
+  color:#2d2222;
+  font-size:20px;
+  font-weight:700;
+  transition:0.2s;
+}
+
+.nav-links a:hover{
+  color:#ff8c3a;
+}
+
+.order-btn{
+  background:#ff8c3a;
+  color:white;
+  padding:14px 34px;
+  border-radius:40px;
+  text-decoration:none;
+  font-size:22px;
+  font-weight:700;
+  box-shadow:0 4px 10px rgba(0,0,0,0.12);
+  transition:0.2s;
+}
+
+.order-btn:hover{
+  transform:translateY(-2px);
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+  background:#c5e29a;
+  padding:80px 20px 90px;
+  text-align:center;
+}
+
+.hero img{
+  width:260px;
+  margin-bottom:35px;
+}
+
+.hero h1{
+  font-size:64px;
+  line-height:1;
+  margin-bottom:28px;
+  color:#2d2222;
+}
+
+.hero p{
+  max-width:850px;
+  margin:auto;
+  font-size:30px;
+  color:#403535;
+}
+
+.sub{
+  margin-top:20px;
+  font-size:22px;
+  color:#666;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.button-row{
+  margin-top:45px;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:25px;
+}
+
+.btn{
+  display:inline-block;
+  padding:18px 38px;
+  border-radius:50px;
+  text-decoration:none;
+  font-size:24px;
+  font-weight:700;
+  transition:0.2s;
+  box-shadow:0 6px 16px rgba(0,0,0,0.12);
+}
+
+.read-btn{
+  background:#0c5fa8;
+  color:white;
+}
+
+.download-btn{
+  background:#52b85c;
+  color:white;
+}
+
+.buy-btn{
+  background:#ff8c3a;
+  color:white;
+}
+
+.btn:hover{
+  transform:translateY(-3px);
+}
+
+/* =========================
+   RESOURCE SECTION
+========================= */
+
+.resources{
+  max-width:1250px;
+  margin:80px auto;
+  padding:0 20px;
+}
+
+.resource-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:50px;
+  align-items:center;
+}
+
+.resource-image img{
+  width:100%;
+  border-radius:26px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.12);
+}
+
+.resource-content h2{
+  font-size:54px;
+  margin-bottom:25px;
+  line-height:1;
+}
+
+.resource-content p{
+  font-size:28px;
+  margin-bottom:25px;
+}
+
+.resource-content ul{
+  margin-top:20px;
+  padding-left:24px;
+}
+
+.resource-content li{
+  margin-bottom:12px;
+  font-size:24px;
+}
+
+/* =========================
+   TEACHERS
+========================= */
+
+.teacher-box{
+  background:white;
+  border-radius:28px;
+  padding:55px;
+  max-width:1200px;
+  margin:70px auto;
+  box-shadow:0 6px 20px rgba(0,0,0,0.08);
+}
+
+.teacher-box h2{
+  text-align:center;
+  font-size:52px;
+  margin-bottom:30px;
+}
+
+.teacher-box p{
+  font-size:28px;
+  text-align:center;
+  max-width:900px;
+  margin:0 auto 25px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+  background:#b8d86b;
+  padding:50px 20px;
+  text-align:center;
+  margin-top:80px;
+}
+
+footer img{
+  width:170px;
+  margin-bottom:20px;
+}
+
+footer p{
+  font-size:22px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:900px){
+
+  .nav{
+    flex-direction:column;
+  }
+
+  .nav-links{
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:18px;
+  }
+
+  .hero h1{
+    font-size:48px;
+  }
+
+  .hero p{
+    font-size:24px;
+  }
+
+  .resource-grid{
+    grid-template-columns:1fr;
+  }
+
+  .resource-content h2{
+    font-size:42px;
+  }
+
+  .resource-content p,
+  .resource-content li{
+    font-size:22px;
+  }
+
+  .teacher-box{
+    padding:35px 25px;
+  }
+
+  .teacher-box p{
+    font-size:24px;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+  <div class="nav">
+
+    <a class="logo" href="index.html">
+      <img src="logo.png" alt="Kimmy and the Little Planet Helpers">
+    </a>
+
+    <div class="nav-links">
+      <a href="index.html#about">About Kimmy</a>
+      <a href="index.html#books">Books</a>
+      <a href="index.html#testimonials">Testimonials</a>
+      <a href="index.html#planet">Help Save Our Planet</a>
+    </div>
+
+    <a class="order-btn"
+       href="https://www.amazon.com.au/dp/B0H1HHVQQZ?binding=paperback&ref=dbs_dp_sirpi"
+       target="_blank">
+       Order a Book
+    </a>
+
+  </div>
+
+</header>
+
+<section class="hero">
+
+  <img src="logo.png" alt="Kimmy Logo">
+
+  <h1>Free Educator Resources</h1>
+
+  <p>
+    Read the story online, then download the complete educator activity pack
+    with printable classroom and home learning resources.
+  </p>
+
+  <div class="sub">
+    Suitable for ages 3–8 • Home • Childcare • Classroom use
+  </div>
+
+  <div class="button-row">
+
+    <a class="btn read-btn" href="read.html">
+      Read Book 1 Online Free
+    </a>
+
+    <a class="btn download-btn"
+       href="Book1-Educator-Pack/BK1-Educator-Pack.pdf"
+       target="_blank">
+       Download Educator Activity Pack
+    </a>
+
+    <a class="btn buy-btn"
+       href="https://www.amazon.com.au/dp/B0H1HHVQQZ?binding=paperback&ref=dbs_dp_sirpi"
+       target="_blank">
+       Buy the Books
+    </a>
+
+  </div>
+
+</section>
+
+<section class="resources">
+
+  <div class="resource-grid">
+
+    <div class="resource-image">
+      <img src="Image 1.jpg" alt="Educator Resources">
+    </div>
+
+    <div class="resource-content">
+
+      <h2>What’s Included?</h2>
+
+      <p>
+        The Educator Activity Pack helps children explore environmental care,
+        kindness, teamwork and how small actions can make a big difference.
+      </p>
+
+      <ul>
+        <li>Printable colouring activities</li>
+        <li>Discussion prompts and learning ideas</li>
+        <li>Classroom and home activities</li>
+        <li>Environmental awareness worksheets</li>
+        <li>Age-appropriate learning resources</li>
+        <li>Simple sustainability conversations for children</li>
+      </ul>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section class="teacher-box">
+
+  <h2>Designed for Teachers, Parents & Childcare</h2>
+
+  <p>
+    These free resources were created to support meaningful conversations
+    about litter, waterways, animals and caring for our environment.
+  </p>
+
+  <p>
+    Educators can read the story online first, then use the printable activity
+    pack alongside classroom, childcare or home learning.
+  </p>
+
+  <div class="button-row">
+
+    <a class="btn read-btn" href="read.html">
+      Read the Story
+    </a>
+
+    <a class="btn download-btn"
+       href="Book1-Educator-Pack/BK1-Educator-Pack.pdf"
+       target="_blank">
+       Download the Pack
+    </a>
+
+  </div>
+
+</section>
+
+<footer>
+
+  <img src="little-planet-books-logo.png" alt="Little Planet Books">
+
+  <p>© Little Planet Books</p>
+
+</footer>
+
+</body>
+</html>
