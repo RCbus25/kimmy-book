@@ -9,445 +9,368 @@
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-html{
-scroll-behavior:smooth;
-}
-
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{
-font-family:'Nunito',sans-serif;
-background:#f8f4ea;
-color:#2d1f28;
-overflow-x:hidden;
+  font-family:'Nunito',sans-serif;
+  background:#f8f4ea;
+  color:#2d1f28;
+  overflow-x:hidden;
 }
-
-img{
-max-width:100%;
-display:block;
-}
-
-a{
-text-decoration:none;
-color:inherit;
-}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
 
 header{
-position:sticky;
-top:0;
-z-index:999;
-background:#b9d86a;
-padding:16px 40px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-transition:transform .35s ease;
-box-shadow:0 2px 10px rgba(0,0,0,0.05);
+  position:sticky;
+  top:0;
+  z-index:999;
+  background:#b9d86a;
+  padding:16px 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  transition:transform .35s ease;
+  box-shadow:0 2px 10px rgba(0,0,0,.05);
 }
-
-header.hide{
-transform:translateY(-100%);
-}
-
-.logo img{
-height:72px;
-}
-
+header.hide{transform:translateY(-100%)}
+.logo img{height:72px}
 nav{
-display:flex;
-gap:34px;
-align-items:center;
-flex-wrap:wrap;
-justify-content:center;
+  display:flex;
+  gap:34px;
+  align-items:center;
+  flex-wrap:wrap;
+  justify-content:center;
 }
-
 nav a{
-font-family:'Baloo 2',cursive;
-font-size:1.2rem;
-font-weight:700;
+  font-family:'Baloo 2',cursive;
+  font-size:1.2rem;
+  font-weight:700;
 }
-
-.order-btn{
-background:#f79346;
-color:white;
-padding:14px 28px;
-border-radius:999px;
-font-family:'Baloo 2',cursive;
-font-size:1.2rem;
-font-weight:700;
-box-shadow:0 8px 18px rgba(0,0,0,0.12);
+.order-btn,.buy-btn{
+  background:#f79346;
+  color:white;
+  padding:14px 28px;
+  border-radius:999px;
+  font-family:'Baloo 2',cursive;
+  font-size:1.1rem;
+  font-weight:700;
+  display:inline-block;
+  box-shadow:0 8px 18px rgba(0,0,0,.12);
 }
 
 .hero{
-background:#c8e09a;
-padding:70px 5%;
+  background:#c8e09a;
+  padding:70px 5%;
 }
-
 .hero-inner{
-max-width:1300px;
-margin:auto;
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:60px;
-align-items:center;
+  max-width:1300px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+  align-items:center;
 }
-
 .hero-text h1{
-font-family:'Baloo 2',cursive;
-font-size:4.8rem;
-line-height:0.95;
-margin-bottom:20px;
+  font-family:'Baloo 2',cursive;
+  font-size:4.8rem;
+  line-height:.95;
+  margin-bottom:20px;
 }
-
 .hero-text h2{
-font-size:2.2rem;
-color:#d96f28;
-margin-bottom:28px;
-line-height:1.2;
+  font-size:2.2rem;
+  color:#d96f28;
+  margin-bottom:28px;
+  line-height:1.2;
 }
-
 .hero-text p{
-font-size:1.25rem;
-line-height:1.8;
-margin-bottom:20px;
+  font-size:1.25rem;
+  line-height:1.8;
+  margin-bottom:20px;
 }
-
 .hero-image img{
-border-radius:30px;
-box-shadow:0 12px 30px rgba(0,0,0,0.12);
+  border-radius:30px;
+  box-shadow:0 12px 30px rgba(0,0,0,.12);
 }
 
-.section{
-padding:90px 5%;
-}
-
+.section{padding:90px 5%}
 .section-inner{
-max-width:1300px;
-margin:auto;
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:60px;
-align-items:center;
+  max-width:1300px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+  align-items:center;
 }
-
 .section-text h2{
-font-family:'Baloo 2',cursive;
-font-size:4rem;
-line-height:1;
-margin-bottom:26px;
-color:#d96f28;
+  font-family:'Baloo 2',cursive;
+  font-size:4rem;
+  line-height:1;
+  margin-bottom:26px;
+  color:#d96f28;
 }
-
 .section-text p{
-font-size:1.15rem;
-line-height:1.9;
-margin-bottom:20px;
+  font-size:1.15rem;
+  line-height:1.9;
+  margin-bottom:20px;
 }
-
 .section-image img{
-border-radius:28px;
-box-shadow:0 10px 28px rgba(0,0,0,0.12);
+  border-radius:28px;
+  box-shadow:0 10px 28px rgba(0,0,0,.12);
 }
 
 .green-banner{
-background:#b9d86a;
-padding:55px 5%;
-text-align:center;
+  background:#b9d86a;
+  padding:55px 5%;
+  text-align:center;
 }
-
 .green-banner h2{
-font-family:'Baloo 2',cursive;
-font-size:4rem;
-margin-bottom:16px;
-line-height:1;
+  font-family:'Baloo 2',cursive;
+  font-size:4rem;
+  margin-bottom:16px;
+  line-height:1;
 }
-
 .green-banner p{
-font-size:2rem;
-color:#d96f28;
-line-height:1.3;
-max-width:900px;
-margin:auto;
+  font-size:2rem;
+  color:#d96f28;
+  line-height:1.3;
+  max-width:900px;
+  margin:auto;
 }
 
 .help-section{
-background:#f5f5f5;
-padding:90px 5%;
+  background:#f5f5f5;
+  padding:90px 5%;
 }
-
 .help-grid{
-max-width:1300px;
-margin:auto;
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:70px;
+  max-width:1300px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:70px;
 }
-
 .help-grid h3{
-font-family:'Baloo 2',cursive;
-font-size:3rem;
-margin-bottom:26px;
-color:#d96f28;
-line-height:1.1;
+  font-family:'Baloo 2',cursive;
+  font-size:3rem;
+  margin-bottom:26px;
+  color:#d96f28;
+  line-height:1.1;
 }
-
 .help-grid p{
-font-size:1.1rem;
-line-height:1.9;
-margin-bottom:16px;
+  font-size:1.1rem;
+  line-height:1.9;
+  margin-bottom:16px;
 }
 
 .books-section{
-background:#c8e09a;
-padding:90px 5%;
-text-align:center;
+  background:#c8e09a;
+  padding:90px 5%;
+  text-align:center;
 }
-
 .books-section h2{
-font-family:'Baloo 2',cursive;
-font-size:4rem;
-margin-bottom:50px;
+  font-family:'Baloo 2',cursive;
+  font-size:4rem;
+  margin-bottom:50px;
 }
-
 .book-row{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:40px;
-max-width:1200px;
-margin:auto;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+  max-width:1200px;
+  margin:auto;
 }
-
 .book-card{
-background:#f8f4ea;
-padding:34px;
-border-radius:32px;
-box-shadow:0 10px 24px rgba(0,0,0,0.08);
-display:flex;
-flex-direction:column;
-justify-content:space-between;
+  background:#f8f4ea;
+  padding:34px;
+  border-radius:32px;
+  box-shadow:0 10px 24px rgba(0,0,0,.08);
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
 }
-
 .book-card img{
-width:100%;
-border-radius:24px;
-margin-bottom:24px;
+  width:100%;
+  border-radius:24px;
+  margin-bottom:24px;
 }
-
 .book-card h3{
-font-family:'Baloo 2',cursive;
-font-size:2.2rem;
-margin-bottom:14px;
+  font-family:'Baloo 2',cursive;
+  font-size:2.2rem;
+  margin-bottom:14px;
 }
-
 .book-card p{
-font-size:1.05rem;
-line-height:1.7;
-margin-bottom:24px;
+  font-size:1.05rem;
+  line-height:1.7;
+  margin-bottom:24px;
 }
 
-.buy-btn{
-display:inline-block;
-background:#f79346;
-color:white;
-padding:14px 28px;
-border-radius:999px;
-font-family:'Baloo 2',cursive;
-font-size:1.1rem;
-font-weight:700;
+.gallery-section{
+  background:white;
+  padding:80px 3%;
+}
+.gallery-grid{
+  max-width:1400px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:22px;
+}
+.gallery-grid img{
+  width:100%;
+  border-radius:24px;
+  box-shadow:0 10px 24px rgba(0,0,0,.1);
 }
 
 .testimonial-divider{
-background:#b9d86a;
-padding:60px 5%;
-text-align:center;
+  background:#b9d86a;
+  padding:60px 5%;
+  text-align:center;
 }
-
+.quote-mark{
+  font-size:5rem;
+  color:#ffffff;
+  line-height:.6;
+  font-family:Georgia,serif;
+  margin-bottom:10px;
+}
 .testimonial-divider h2{
-font-family:'Baloo 2',cursive;
-font-size:3.5rem;
-margin-bottom:10px;
+  font-family:'Baloo 2',cursive;
+  font-size:3.5rem;
+  margin-bottom:10px;
 }
-
 .testimonial-divider p{
-font-size:1.3rem;
+  font-size:1.3rem;
 }
-
 .testimonials{
-background:#f8f4ea;
-padding:90px 5%;
-border-top:8px solid #b9d86a;
+  background:#f8f4ea;
+  padding:90px 5%;
+  border-top:8px solid #b9d86a;
 }
-
 .testimonial-grid{
-max-width:1300px;
-margin:auto;
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:40px;
+  max-width:1300px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:40px;
 }
-
-.testimonial{
-text-align:center;
-}
-
+.testimonial{text-align:center}
 .testimonial h3{
-font-family:'Baloo 2',cursive;
-font-size:2rem;
-margin-bottom:16px;
+  font-family:'Baloo 2',cursive;
+  font-size:2rem;
+  margin-bottom:16px;
 }
-
 .testimonial p{
-font-size:1.05rem;
-line-height:1.8;
+  font-size:1.05rem;
+  line-height:1.8;
 }
 
 footer{
-background:#efe7d8;
-padding:70px 5%;
-text-align:center;
+  background:#efe7d8;
+  padding:70px 5%;
+  text-align:center;
 }
-
 footer img{
-height:70px;
-margin:auto auto 24px;
+  height:70px;
+  margin:auto auto 24px;
 }
-
-footer p{
-font-size:1rem;
-}
+footer p{font-size:1rem}
 
 .float-buy{
-position:fixed;
-right:20px;
-bottom:20px;
-background:#f79346;
-color:white;
-padding:14px 26px;
-border-radius:999px;
-font-family:'Baloo 2',cursive;
-font-size:1.15rem;
-font-weight:700;
-z-index:999;
-box-shadow:0 10px 24px rgba(0,0,0,0.18);
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  background:#f79346;
+  color:white;
+  padding:14px 26px;
+  border-radius:999px;
+  font-family:'Baloo 2',cursive;
+  font-size:1.15rem;
+  font-weight:700;
+  z-index:999;
+  box-shadow:0 10px 24px rgba(0,0,0,.18);
 }
 
 @media(max-width:900px){
-
-.hero-inner,
-.section-inner,
-.help-grid,
-.book-row,
-.testimonial-grid{
-grid-template-columns:1fr;
-}
-
-.section-image{
-order:2;
-}
-
+  .hero-inner,.section-inner,.help-grid,.book-row,.testimonial-grid{
+    grid-template-columns:1fr;
+  }
+  .section-image{order:2}
 }
 
 @media(max-width:600px){
-
-header{
-padding:8px 14px 10px;
-gap:10px;
-flex-direction:column;
+  header{
+    padding:8px 14px 10px;
+    gap:10px;
+    flex-direction:column;
+  }
+  .logo img{height:110px}
+  nav{
+    gap:8px 16px;
+    max-width:340px;
+  }
+  nav a{
+    font-size:.88rem;
+    line-height:1.1;
+    text-align:center;
+  }
+  .order-btn{
+    padding:10px 20px;
+    font-size:.92rem;
+  }
+  .hero{padding:38px 20px}
+  .hero-text h1{
+    font-size:2.7rem;
+    line-height:1.02;
+  }
+  .hero-text h2{
+    font-size:1.55rem;
+    line-height:1.18;
+  }
+  .hero-text p{
+    font-size:1rem;
+    line-height:1.7;
+  }
+  .green-banner{
+    padding:38px 20px;
+  }
+  .green-banner h2{
+    font-size:2.5rem;
+    line-height:1.05;
+  }
+  .green-banner p{
+    font-size:1.3rem;
+    line-height:1.4;
+  }
+  .section{padding:50px 20px}
+  .section-text h2,.books-section h2{
+    font-size:2.6rem;
+    line-height:1.08;
+  }
+  .help-grid h3{
+    font-size:2.3rem;
+    line-height:1.08;
+  }
+  .section-text p,.help-grid p,.book-card p,.testimonial p{
+    font-size:1rem;
+    line-height:1.7;
+  }
+  .book-card{padding:24px}
+  .gallery-grid{
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+  }
+  .testimonial-divider h2{
+    font-size:2.4rem;
+  }
+  .quote-mark{
+    font-size:3.2rem;
+  }
+  .float-buy{
+    padding:10px 18px;
+    font-size:.92rem;
+    right:14px;
+    bottom:14px;
+  }
 }
-
-.logo img{
-height:110px;
-}
-
-nav{
-gap:8px 16px;
-max-width:340px;
-}
-
-nav a{
-font-size:0.88rem;
-line-height:1.1;
-text-align:center;
-}
-
-.order-btn{
-padding:10px 20px;
-font-size:0.92rem;
-}
-
-.hero{
-padding:38px 20px;
-}
-
-.hero-text h1{
-font-size:2.7rem;
-line-height:1.02;
-}
-
-.hero-text h2{
-font-size:1.55rem;
-line-height:1.18;
-}
-
-.green-banner{
-padding:38px 20px;
-}
-
-.green-banner h2{
-font-size:2.5rem;
-line-height:1.05;
-}
-
-.green-banner p{
-font-size:1.3rem;
-line-height:1.4;
-}
-
-.section{
-padding:50px 20px;
-}
-
-.section-text h2,
-.books-section h2{
-font-size:2.6rem;
-line-height:1.08;
-}
-
-.help-grid h3{
-font-size:2.3rem;
-line-height:1.08;
-}
-
-.section-text p,
-.help-grid p,
-.book-card p,
-.testimonial p{
-font-size:1rem;
-line-height:1.7;
-}
-
-.book-card{
-padding:24px;
-}
-
-.float-buy{
-padding:10px 18px;
-font-size:0.92rem;
-right:14px;
-bottom:14px;
-}
-
-.testimonial-divider h2{
-font-size:2.4rem;
-}
-
-}
-
 </style>
 </head>
 
@@ -473,18 +396,14 @@ font-size:2.4rem;
 
 <section class="hero">
   <div class="hero-inner">
-
     <div class="hero-text">
       <h1>Join Kimmy’s Adventure</h1>
-
       <h2>Together We Can Make a Difference</h2>
-
       <p>
         Embark on a delightful journey with Kimmy and the Little Planet Helpers —
         a charming children's story that inspires young readers to care for the
         planet, waterways and oceans.
       </p>
-
       <a class="buy-btn" href="https://www.amazon.com.au/dp/B0GWD98S82" target="_blank">
         Buy Now
       </a>
@@ -493,27 +412,22 @@ font-size:2.4rem;
     <div class="hero-image">
       <img src="hero.jpg" alt="Kimmy Book Hero">
     </div>
-
   </div>
 </section>
 
 <section class="section" id="about">
   <div class="section-inner">
-
     <div class="section-text">
       <h2>Meet Kimmy</h2>
-
       <p>
         Meet Kimmy. She’s a kind-hearted girl who loves her town and her planet.
         When she discovers litter on her favourite path, Kimmy decides it’s time
         to take action.
       </p>
-
       <p>
         With help from her friends and her magical sparkling bag, she begins a
         joyful clean-up mission that inspires the whole community.
       </p>
-
       <p>
         Perfect for ages 3–8, this beautifully illustrated story encourages
         kindness, teamwork and environmental care.
@@ -523,29 +437,22 @@ font-size:2.4rem;
     <div class="section-image">
       <img src="meet.jpg" alt="Meet Kimmy">
     </div>
-
   </div>
 </section>
 
 <section class="green-banner">
   <h2>The Good News Is</h2>
-
-  <p>
-    Small actions from people like you can help protect our planet 🌎
-  </p>
+  <p>Small actions from people like you can help protect our planet 🌎</p>
 </section>
 
 <section class="section">
   <div class="section-inner">
-
     <div class="section-text">
       <img src="logo.png" alt="Kimmy Logo" style="height:120px;margin-bottom:25px;">
-
       <p>
         Rogan and Kim Carroll are Sydney Northern Beaches locals who love the
         beach and take pride in their local community.
       </p>
-
       <p>
         Walking to work or to the beach, they collect the rubbish that people
         leave behind — inspiring the idea behind Kimmy and the Little Planet Helpers.
@@ -555,16 +462,13 @@ font-size:2.4rem;
     <div class="section-image">
       <img src="author.jpg" alt="Author Photo">
     </div>
-
   </div>
 </section>
 
 <section class="help-section" id="help">
   <div class="help-grid">
-
     <div>
       <h3>What You Can Do</h3>
-
       <p>🗑️ Find a bin</p>
       <p>🎒 Take your litter with you</p>
       <p>👀 Pick up one extra piece</p>
@@ -574,38 +478,30 @@ font-size:2.4rem;
 
     <div>
       <h3>Why It Matters</h3>
-
       <p>
         Everything in nature is connected. When one part is harmed,
         it can affect many others.
       </p>
 
       <h3 style="margin-top:40px;">Did You Know?</h3>
-
       <p>🌊 Over 8 million tonnes of plastic enter the ocean every year</p>
       <p>🐢 More than 1 million sea animals die each year from plastic</p>
       <p>🐟 90% of seabirds have plastic in their stomachs</p>
     </div>
-
   </div>
 </section>
 
 <section class="books-section" id="books">
-
   <h2>The Books</h2>
 
   <div class="book-row">
-
     <div class="book-card">
       <img src="cover.jpg" alt="Book 1">
-
       <h3>Book 1</h3>
-
       <p>
         Kimmy and her friends discover how small actions can help protect
         their town, waterways and planet.
       </p>
-
       <a class="buy-btn" href="https://www.amazon.com.au/dp/B0GWD98S82" target="_blank">
         Buy Book 1
       </a>
@@ -613,37 +509,37 @@ font-size:2.4rem;
 
     <div class="book-card">
       <img src="Front Cover Book 2.png" alt="Book 2">
-
       <h3>A Day at the Beach</h3>
-
       <p>
         Kimmy and her friends head to the beach and learn how caring for
         the sand, sea and shore protects ocean animals.
       </p>
-
       <a class="buy-btn" href="https://www.amazon.com.au/dp/B0H1HHVQQZ" target="_blank">
         Buy Book 2
       </a>
     </div>
+  </div>
+</section>
 
+<section class="gallery-section" id="gallery">
+  <div class="gallery-grid">
+    <img src="gallery1.jpg" alt="Gallery 1">
+    <img src="gallery2.jpg" alt="Gallery 2">
+    <img src="gallery3.jpg" alt="Gallery 3">
+    <img src="gallery4.jpg" alt="Gallery 4">
   </div>
 </section>
 
 <section class="testimonial-divider">
+  <div class="quote-mark">“</div>
   <h2>What Readers Are Saying</h2>
-
-  <p>
-    Reviews and feedback from families, parents and grandparents.
-  </p>
+  <p>Reviews and feedback from families, parents and grandparents.</p>
 </section>
 
 <section class="testimonials" id="testimonials">
-
   <div class="testimonial-grid">
-
     <div class="testimonial">
       <h3>Lily Johnson</h3>
-
       <p>
         “Kimmy’s story is delightful! It teaches kids the importance of caring
         for our planet in a fun and engaging way.”
@@ -652,7 +548,6 @@ font-size:2.4rem;
 
     <div class="testimonial">
       <h3>Mark Thompson</h3>
-
       <p>
         “I bought it for the grandchildren. It’s a wonderful book with
         beautiful illustrations and an important message.”
@@ -661,20 +556,16 @@ font-size:2.4rem;
 
     <div class="testimonial">
       <h3>Sophie Kwan</h3>
-
       <p>
         “An inspiring story that prompts conversations about environmental
         responsibility and kindness.”
       </p>
     </div>
-
   </div>
-
 </section>
 
 <footer>
   <img src="little-planet-books-logo.png" alt="Little Planet Books">
-
   <p>© Little Planet Books</p>
 </footer>
 
@@ -683,24 +574,20 @@ font-size:2.4rem;
 </a>
 
 <script>
-
 let lastScroll = 0;
 const header = document.getElementById('header');
 
 window.addEventListener('scroll', () => {
+  const currentScroll = window.pageYOffset;
 
-const currentScroll = window.pageYOffset;
+  if(currentScroll > lastScroll && currentScroll > 120){
+    header.classList.add('hide');
+  } else {
+    header.classList.remove('hide');
+  }
 
-if(currentScroll > lastScroll && currentScroll > 120){
-header.classList.add('hide');
-}else{
-header.classList.remove('hide');
-}
-
-lastScroll = currentScroll;
-
+  lastScroll = currentScroll;
 });
-
 </script>
 
 </body>
