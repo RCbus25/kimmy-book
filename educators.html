@@ -1,86 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Educator Resources | Kimmy and the Little Planet Helpers</title>
+<title>Free Educator Resources | Kimmy and the Little Planet Helpers</title>
 
-<link href="https://docs.google.com/forms/d/e/1FAIpQLSfdgAyXpA7hP6UzqugeQyai1GjkRSgE2D07ls9AeaC036XzXg/viewform?usp=dialog>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
 body{font-family:'Nunito',sans-serif;background:#f7f3ea;color:#2b1f24;line-height:1.6}
+a{text-decoration:none}
 
 header{
 position:sticky;top:0;z-index:999;background:#b9d86a;padding:14px 5%;
-display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 10px rgba(0,0,0,.05)
+display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 10px rgba(0,0,0,.06)
 }
-.logo img{height:88px;display:block}
-nav{display:flex;gap:34px;align-items:center;flex-wrap:wrap;justify-content:center}
-nav a{text-decoration:none;color:#2b1f24;font-family:'Baloo 2',cursive;font-size:1.1rem;font-weight:700}
+
+.logo img{height:82px;display:block}
+
+nav{display:flex;gap:30px;align-items:center;flex-wrap:wrap;justify-content:center}
+nav a{color:#2b1f24;font-family:'Baloo 2',cursive;font-size:1.1rem;font-weight:700}
 nav a:hover{opacity:.7}
-.header-btn{background:#f79245;color:white;padding:14px 28px;border-radius:999px;text-decoration:none;font-family:'Baloo 2',cursive;font-size:1.1rem;font-weight:700;box-shadow:0 8px 20px rgba(247,146,69,.25)}
 
-.hero{background:#cde59b;padding:80px 20px;text-align:center}
-.hero-logo{width:240px;max-width:80%;margin-bottom:25px}
-.hero h1{font-family:'Baloo 2',cursive;font-size:4rem;line-height:1;margin-bottom:24px;color:#2b1f24}
-.hero p{max-width:900px;margin:auto;font-size:1.45rem;line-height:1.8;margin-bottom:28px}
-.hero-small{font-size:1.05rem;opacity:.8;margin-bottom:40px}
+.header-btn{
+background:#f79245;color:white;padding:14px 28px;border-radius:999px;
+font-family:'Baloo 2',cursive;font-weight:700;font-size:1.05rem;
+}
 
-.button-row{display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
-.btn{display:inline-block;padding:18px 34px;border-radius:999px;text-decoration:none;font-weight:700;font-size:1.05rem;color:white;transition:.2s}
+.hero{
+background:#cde59b;text-align:center;padding:80px 20px 90px;
+}
+
+.hero-logo{width:220px;max-width:80%;margin-bottom:24px}
+
+.hero h1{
+font-family:'Baloo 2',cursive;font-size:4rem;line-height:1.05;margin-bottom:24px;
+}
+
+.hero p{
+max-width:900px;margin:0 auto 24px;font-size:1.35rem;line-height:1.75;
+}
+
+.hero-small{
+font-size:1.05rem;opacity:.8;margin-bottom:38px;
+}
+
+.button-row{
+display:flex;gap:20px;justify-content:center;flex-wrap:wrap;
+}
+
+.btn{
+display:inline-block;padding:17px 32px;border-radius:999px;color:white;
+font-weight:800;font-size:1.05rem;transition:.2s;
+}
+
 .btn:hover{transform:translateY(-2px)}
 .blue{background:#2d63b8}
 .green{background:#5ec85a}
 .orange{background:#f79245}
 
-.steps{padding:80px 5%;background:#fff}
-.section-title{text-align:center;font-family:'Baloo 2',cursive;font-size:3.4rem;line-height:1.1;margin-bottom:45px}
-.step-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;max-width:1200px;margin:auto}
-.step-card{background:#f7f3ea;border-radius:24px;padding:34px;text-align:center;box-shadow:0 8px 24px rgba(0,0,0,.05)}
-.step-number{width:58px;height:58px;border-radius:50%;background:#5ec85a;color:white;display:flex;align-items:center;justify-content:center;margin:0 auto 18px;font-family:'Baloo 2',cursive;font-size:2rem;font-weight:700}
-.step-card h3{font-family:'Baloo 2',cursive;font-size:1.9rem;color:#d96e2c;margin-bottom:12px}
-.step-card p{font-size:1.1rem}
+.section{
+padding:80px 5%;
+}
 
-.pack-section{padding:90px 5%;background:#f7f3ea}
-.pack-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;max-width:1300px;margin:auto}
-.pack-image img{width:100%;border-radius:26px;box-shadow:0 12px 30px rgba(0,0,0,.08);display:block}
-.pack-content h2{font-family:'Baloo 2',cursive;font-size:4rem;line-height:1;margin-bottom:30px}
-.pack-content p{font-size:1.3rem;margin-bottom:22px}
-.pack-content ul{padding-left:24px;font-size:1.2rem;line-height:2}
+.white{background:white}
+.cream{background:#f7f3ea}
 
-.register-box{background:#fff;border-radius:26px;padding:42px;margin-top:36px;box-shadow:0 10px 30px rgba(0,0,0,.06)}
-.register-box h3{font-family:'Baloo 2',cursive;font-size:2.4rem;color:#2b1f24;margin-bottom:14px}
-.register-box p{font-size:1.15rem;margin-bottom:24px}
+.section h2{
+font-family:'Baloo 2',cursive;font-size:3.4rem;text-align:center;line-height:1.1;margin-bottom:45px;
+}
 
-.features{padding:80px 5%;background:#ffffff}
-.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;max-width:1300px;margin:auto}
-.feature-card{background:#f7f3ea;padding:38px;border-radius:24px;text-align:center}
-.feature-card h3{font-family:'Baloo 2',cursive;font-size:2rem;margin-bottom:18px;color:#d96e2c}
+.steps{
+display:grid;grid-template-columns:repeat(3,1fr);gap:28px;max-width:1200px;margin:auto;
+}
 
-footer{background:#efe6d8;padding:60px 20px;text-align:center}
-footer img{height:85px;margin-bottom:20px}
+.step{
+background:#f7f3ea;border-radius:24px;padding:34px;text-align:center;box-shadow:0 8px 22px rgba(0,0,0,.06);
+}
+
+.step-number{
+width:58px;height:58px;border-radius:50%;background:#5ec85a;color:white;
+display:flex;align-items:center;justify-content:center;margin:0 auto 18px;
+font-family:'Baloo 2',cursive;font-size:2rem;font-weight:700;
+}
+
+.step h3{
+font-family:'Baloo 2',cursive;font-size:1.9rem;color:#d96e2c;margin-bottom:12px;
+}
+
+.step p{font-size:1.1rem}
+
+.pack-grid{
+display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;max-width:1200px;margin:auto;
+}
+
+.pack-card{
+background:white;border-radius:26px;padding:42px;box-shadow:0 10px 28px rgba(0,0,0,.07);
+}
+
+.pack-card h2{text-align:left;margin-bottom:24px}
+
+.pack-card p{
+font-size:1.2rem;margin-bottom:22px;
+}
+
+.pack-card ul{
+padding-left:24px;font-size:1.13rem;line-height:2;
+}
+
+.image-card img{
+width:100%;border-radius:24px;box-shadow:0 12px 30px rgba(0,0,0,.08);display:block;
+}
+
+.register-box{
+max-width:950px;margin:60px auto 0;background:#fff;border-radius:26px;padding:42px;
+text-align:center;box-shadow:0 10px 28px rgba(0,0,0,.07);
+}
+
+.register-box h3{
+font-family:'Baloo 2',cursive;font-size:2.4rem;margin-bottom:16px;color:#2b1f24;
+}
+
+.register-box p{
+font-size:1.15rem;margin-bottom:26px;
+}
+
+.features{
+display:grid;grid-template-columns:repeat(3,1fr);gap:28px;max-width:1200px;margin:auto;
+}
+
+.feature{
+background:#f7f3ea;border-radius:24px;padding:34px;text-align:center;
+}
+
+.feature h3{
+font-family:'Baloo 2',cursive;font-size:2rem;color:#d96e2c;margin-bottom:14px;
+}
+
+footer{
+background:#efe6d8;text-align:center;padding:55px 20px;
+}
+
+footer img{height:80px;margin-bottom:18px}
 footer p{font-size:1rem}
 
 @media(max-width:900px){
-header{flex-direction:column;gap:14px;padding:12px 20px}
-.logo img{height:74px}
-nav{gap:18px}
-nav a{font-size:1rem}
-.header-btn{padding:12px 24px;font-size:1rem}
-.hero{padding:60px 20px}
-.hero-logo{width:170px;margin-bottom:18px}
-.hero h1{font-size:2.7rem}
-.hero p{font-size:1.12rem;line-height:1.7}
+header{flex-direction:column;gap:12px;padding:12px 20px}
+.logo img{height:70px}
+nav{gap:16px}
+nav a{font-size:.98rem}
+.header-btn{padding:12px 22px;font-size:1rem}
+.hero{padding:55px 20px}
+.hero-logo{width:165px}
+.hero h1{font-size:2.65rem}
+.hero p{font-size:1.08rem}
 .button-row{flex-direction:column;align-items:center}
-.btn{width:90%;max-width:340px;text-align:center;padding:16px 20px;font-size:1rem}
-.step-grid,.pack-grid,.feature-grid{grid-template-columns:1fr}
-.section-title{font-size:2.6rem}
-.pack-content h2{font-size:2.8rem;text-align:center}
-.pack-content p,.pack-content ul{font-size:1.1rem}
-.feature-card{padding:28px}
+.btn{width:90%;max-width:340px;text-align:center}
+.steps,.pack-grid,.features{grid-template-columns:1fr}
+.section h2{font-size:2.55rem}
+.pack-card h2{text-align:center}
 }
 </style>
 </head>
@@ -99,7 +179,9 @@ nav a{font-size:1rem}
 <a href="index.html#help">Help Save Our Planet</a>
 </nav>
 
-<a class="header-btn" href="https://www.amazon.com.au/dp/B0H1HHVQQZ" target="_blank">Order a Book</a>
+<a class="header-btn" href="https://www.amazon.com.au/dp/B0H1HHVQQZ" target="_blank">
+Order a Book
+</a>
 </header>
 
 <section class="hero">
@@ -117,43 +199,43 @@ Suitable for ages 3–8 • Home • Childcare • Classroom use
 
 <div class="button-row">
 <a class="btn blue" href="read.html">Read Book 1 Online Free</a>
-<a class="btn green" href="YOUR_GOOGLE_FORM_PUBLIC_LINK_HERE" target="_blank">Register for Free Resources</a>
+<a class="btn green" href="https://docs.google.com/forms/d/e/1FAIpQLSfdgAyXpA7hP6UzqugeQyai1GjkRSgE2D07ls9AeaC036XzXg/viewform" target="_blank">Register for Free Resources</a>
 <a class="btn orange" href="https://www.amazon.com.au/dp/B0H1HHVQQZ" target="_blank">Buy the Books</a>
 </div>
 </section>
 
-<section class="steps">
-<h2 class="section-title">How It Works</h2>
+<section class="section white">
+<h2>How It Works</h2>
 
-<div class="step-grid">
-<div class="step-card">
+<div class="steps">
+<div class="step">
 <div class="step-number">1</div>
 <h3>Read the Story</h3>
-<p>Enjoy the free read-aloud version of <em>Kimmy and the Little Planet Helpers</em>.</p>
+<p>Enjoy the free online read-aloud version of <em>Kimmy and the Little Planet Helpers</em>.</p>
 </div>
 
-<div class="step-card">
+<div class="step">
 <div class="step-number">2</div>
 <h3>Register</h3>
-<p>Complete a short educator form so we can share the free resources with teachers, centres, families and libraries.</p>
+<p>Complete a short form so we can share the free resources with educators, families, libraries and childcare centres.</p>
 </div>
 
-<div class="step-card">
+<div class="step">
 <div class="step-number">3</div>
-<h3>Download Resources</h3>
-<p>After registering, continue to the read-aloud page and download the printable activity pack at the end.</p>
+<h3>Download the Pack</h3>
+<p>After registering, continue to the read-aloud page. The activity pack download is available at the end of the story.</p>
 </div>
 </div>
 </section>
 
-<section class="pack-section">
+<section class="section cream">
 <div class="pack-grid">
 
-<div class="pack-image">
-<img src="EdPackCover.jpg" alt="Educator Activity Pack">
+<div class="image-card">
+<img src="EdPackCover.jpg" alt="Kimmy Educator Activity Pack">
 </div>
 
-<div class="pack-content">
+<div class="pack-card">
 <h2>What’s Included?</h2>
 
 <p>
@@ -167,34 +249,38 @@ The Educator Activity Pack helps children explore kindness, teamwork, environmen
 <li>Environmental awareness worksheets</li>
 <li>Age-appropriate learning resources</li>
 <li>Simple sustainability conversations for children</li>
+<li>Kindness and teamwork activities</li>
 </ul>
+</div>
+
+</div>
 
 <div class="register-box">
 <h3>Register to Access the Pack</h3>
 <p>
-Educators, parents, carers, libraries and childcare centres can register for free access. The activity pack download link appears at the end of the read-aloud page after registration.
+The activity pack is free. Please complete the short registration form first, then continue to the read-aloud page where the download link appears at the end.
 </p>
-<a class="btn green" href="YOUR_GOOGLE_FORM_PUBLIC_LINK_HERE" target="_blank">Register for Free Resources</a>
-</div>
 
-</div>
+<a class="btn green" href="https://docs.google.com/forms/d/e/1FAIpQLSfdgAyXpA7hP6UzqugeQyai1GjkRSgE2D07ls9AeaC036XzXg/viewform" target="_blank">
+Register for Free Resources
+</a>
 </div>
 </section>
 
-<section class="features">
-<div class="feature-grid">
+<section class="section white">
+<div class="features">
 
-<div class="feature-card">
+<div class="feature">
 <h3>Easy to Use</h3>
 <p>Simple printable activities designed to fit naturally into home and classroom learning.</p>
 </div>
 
-<div class="feature-card">
+<div class="feature">
 <h3>Positive Messages</h3>
 <p>Encourages kindness, teamwork, environmental care and thoughtful discussion.</p>
 </div>
 
-<div class="feature-card">
+<div class="feature">
 <h3>Fun & Engaging</h3>
 <p>Bright illustrations and practical activities help children connect with the story.</p>
 </div>
