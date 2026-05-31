@@ -1,1 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kimmy's Beach Clean-Up Game</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="game-wrap">
+    <section id="gameArea">
+      <img src="images/beach.jpg" id="beach" alt="Beach background" />
 
+      <div class="top-bar">
+        <div>Cleaned: <span id="score">0</span>/<span id="total">10</span></div>
+        <button id="restartBtn">Play Again</button>
+      </div>
+
+      <img src="images/kimmy.png" id="kimmy" alt="Kimmy" />
+      <img src="images/sack.png" id="sack" alt="Kimmy's magic sack" />
+      <img src="images/turtle.png" id="turtle" alt="Happy sea turtle" />
+
+      <div id="message">
+        <h1>Kimmy's Beach Clean-Up</h1>
+        <p>Tap the rubbish to help clean the beach.</p>
+        <button id="startBtn">Start Cleaning</button>
+      </div>
+
+      <div id="winMessage">
+        <h1>You’re a Little Planet Helper!</h1>
+        <p>You helped clean the beach and protect the turtle.</p>
+        <button id="playAgainBtn">Play Again</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="game.js"></script>
+</body>
+</html>
