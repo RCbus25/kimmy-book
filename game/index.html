@@ -3,43 +3,49 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kimmy's Beach Clean-Up Game</title>
+  <title>Kimmy's Little Planet Helper Game</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <main class="game-wrap">
-    <section id="gameArea">
-      <img src="images/beach.jpg" id="beach" alt="Beach background" />
+  <main id="gameArea">
+    <img id="background" src="images/town.jpg" alt="Game background" />
 
-      <div class="top-bar">
-        <div class="progress-wrap">
-          <span>Magic Sack</span>
-          <div class="progress">
-            <div id="progressFill"></div>
-          </div>
-          <span id="percentText">0%</span>
+    <div id="hud">
+      <div class="hud-box">
+        <strong id="levelTitle">Level 1: Town Clean-Up</strong>
+        <div class="progress">
+          <div id="progressFill"></div>
         </div>
-        <button id="restartBtn">Play Again</button>
+        <span id="percentText">0%</span>
       </div>
-
-      <div id="encouragement"></div>
-
-      <img src="images/kimmy.png" id="kimmy" alt="Kimmy" />
-      <img src="images/sack.png" id="sack" alt="Kimmy's magic sack" />
-      <img src="images/turtle.png" id="turtle" alt="Happy sea turtle" />
-
-      <div id="message">
-        <h1>Kimmy's Beach Clean-Up</h1>
-        <p>Tap the rubbish to help fill Kimmy's magic sack.</p>
-        <button id="startBtn">Start Cleaning</button>
+      <div class="hud-box small">
+        ⭐ <span id="scoreText">0</span>
       </div>
+      <button id="pauseBtn">Pause</button>
+    </div>
 
-      <div id="winMessage">
-        <h1>🌎 Little Planet Helper 🌎</h1>
-        <p>Small actions make a big difference!</p>
-        <button id="playAgainBtn">Play Again</button>
-      </div>
-    </section>
+    <div id="messageBubble"></div>
+
+    <img id="kimmy" src="images/kimmy.png" alt="Kimmy" />
+    <img id="sack" src="images/sack.png" alt="Magic sack" />
+
+    <div id="startScreen" class="screen">
+      <h1>Kimmy’s Clean-Up Adventure</h1>
+      <p>Tap the rubbish before it reaches the drain or water. Don’t tap the animals!</p>
+      <button id="startBtn">Start</button>
+    </div>
+
+    <div id="levelScreen" class="screen hidden">
+      <h1 id="levelCompleteTitle">Level Complete!</h1>
+      <p id="levelCompleteText">Great job!</p>
+      <button id="nextLevelBtn">Next Level</button>
+    </div>
+
+    <div id="winScreen" class="screen hidden">
+      <h1>🌎 Little Planet Helper 🌎</h1>
+      <p>Small actions make a big difference!</p>
+      <button id="playAgainBtn">Play Again</button>
+    </div>
   </main>
 
   <script src="game.js"></script>
