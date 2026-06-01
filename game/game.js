@@ -24,7 +24,7 @@ const levels = [
     title: "Level 1: Town Clean-Up",
     bg: "images/town.jpg",
     goal: 10,
-    speed: 0.9,
+    speed: 0.35,
     litter: ["images/bottle.png", "images/can.png", "images/wrapper.png"],
     animals: ["images/bird.png", "images/pigeon.png", "images/possum.png"],
     reward: "🏘️ Town Helper",
@@ -34,7 +34,7 @@ const levels = [
     title: "Level 2: River Rescue",
     bg: "images/riverscene.jpg",
     goal: 12,
-    speed: 1.15,
+    speed: 0.45,
     litter: ["images/bottle.png", "images/can.png", "images/wrapper.png"],
     animals: ["images/fish.png"],
     reward: "🐟 River Guardian",
@@ -44,7 +44,7 @@ const levels = [
     title: "Level 3: Ocean Rescue",
     bg: "images/ocean.jpg",
     goal: 14,
-    speed: 1.35,
+    speed: 0.55,
     litter: ["images/bottle.png", "images/can.png", "images/wrapper.png"],
     animals: ["images/seagull.png", "images/sea-turtle.png"],
     reward: "🐢 Ocean Protector",
@@ -127,8 +127,8 @@ function spawnLitter() {
   const targetY = currentLevel === 0 ? 82 : random(35, 70);
 
   const angle = Math.atan2(targetY - item.y, targetX - item.x);
-  item.vx = Math.cos(angle) * level.speed * random(0.45, 0.9);
-  item.vy = Math.sin(angle) * level.speed * random(0.45, 0.9);
+  item.vx = Math.cos(angle) * level.speed * random(0.25, 0.55);
+  item.vy = Math.sin(angle) * level.speed * random(0.25, 0.55);
   item.spin = random(-1.2, 1.2);
 
   item.el.addEventListener("pointerdown", e => {
