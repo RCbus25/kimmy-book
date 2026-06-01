@@ -2,90 +2,85 @@
   box-sizing: border-box;
 }
 
-body {
+html, body {
   margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
   font-family: Arial, sans-serif;
   background: #f6efe3;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-}
-
-/* Main frame */
-
-.game-wrap {
-  width: 100%;
-  max-width: 1100px;
-  padding: 10px;
 }
 
 #gameArea {
   position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 9;
+  width: 100vw;
+  height: 100dvh;
   overflow: hidden;
-  border-radius: 24px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
-  background: #d7f4ff;
-  user-select: none;
+  background: #cdefff;
   touch-action: manipulation;
+  user-select: none;
 }
 
-#beach {
+#background {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-/* Top progress bar */
-
-.top-bar {
+#hud {
   position: absolute;
-  top: 12px;
-  left: 12px;
-  right: 12px;
+  top: max(10px, env(safe-area-inset-top));
+  left: 10px;
+  right: 10px;
   display: flex;
-  justify-content: space-between;
+  gap: 8px;
   align-items: center;
-  gap: 12px;
-  font-weight: bold;
-  color: #174c6b;
-  background: rgba(255,255,255,0.9);
-  padding: 10px 14px;
-  border-radius: 999px;
-  z-index: 30;
+  z-index: 50;
 }
 
-.progress-wrap {
+.hud-box {
+  background: rgba(255,255,255,0.9);
+  color: #174c6b;
+  border-radius: 999px;
+  padding: 8px 12px;
   display: flex;
   align-items: center;
   gap: 8px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.14);
+  font-size: clamp(12px, 2.8vw, 18px);
+}
+
+.hud-box:first-child {
   flex: 1;
+  min-width: 0;
+}
+
+.hud-box.small {
+  flex: 0 0 auto;
+}
+
+#levelTitle {
+  white-space: nowrap;
 }
 
 .progress {
-  height: 16px;
   flex: 1;
-  max-width: 420px;
+  height: 14px;
   background: #d8f3ff;
-  border: 2px solid #ffffff;
   border-radius: 999px;
   overflow: hidden;
-  box-shadow: inset 0 1px 3px rgba(0,0,0,0.15);
+  border: 2px solid white;
+  min-width: 60px;
 }
 
 #progressFill {
-  width: 0%;
   height: 100%;
+  width: 0%;
   background: linear-gradient(90deg, #ffcc33, #ff8a00);
   border-radius: 999px;
-  transition: width 0.35s ease;
-}
-
-#percentText {
-  min-width: 40px;
-  text-align: right;
+  transition: width 0.25s ease;
 }
 
 button {
@@ -94,269 +89,178 @@ button {
   color: white;
   font-weight: bold;
   border-radius: 999px;
-  padding: 10px 18px;
+  padding: 10px 16px;
   cursor: pointer;
-  font-size: 16px;
-  box-shadow: 0 4px 0 rgba(0,0,0,0.15);
+  font-size: clamp(14px, 3vw, 18px);
+  box-shadow: 0 4px 0 rgba(0,0,0,0.18);
 }
 
 button:active {
   transform: translateY(2px);
-  box-shadow: 0 2px 0 rgba(0,0,0,0.15);
+  box-shadow: 0 2px 0 rgba(0,0,0,0.18);
 }
 
-/* Characters */
+#pauseBtn {
+  padding: 8px 12px;
+}
 
 #kimmy {
   position: absolute;
   left: 3%;
-  bottom: 4%;
-  width: 18%;
-  max-width: 190px;
-  z-index: 12;
+  bottom: 2%;
+  width: clamp(92px, 17vw, 190px);
+  z-index: 30;
   pointer-events: none;
 }
 
 #sack {
   position: absolute;
-  left: 17%;
-  bottom: 5%;
-  width: 11%;
-  max-width: 120px;
-  z-index: 13;
-  transition: filter 0.3s, transform 0.3s;
+  left: clamp(92px, 17vw, 190px);
+  bottom: 3%;
+  width: clamp(58px, 10vw, 115px);
+  z-index: 31;
   pointer-events: none;
+  transition: transform 0.2s, filter 0.2s;
 }
 
 #sack.glow {
-  filter:
-    drop-shadow(0 0 8px #ffe680)
-    drop-shadow(0 0 18px gold)
-    drop-shadow(0 0 28px #ff9b00);
   transform: scale(1.08);
+  filter: drop-shadow(0 0 12px gold) drop-shadow(0 0 24px #ff8a00);
 }
 
-#sack.full-glow {
-  filter:
-    drop-shadow(0 0 12px #fff2a6)
-    drop-shadow(0 0 26px gold)
-    drop-shadow(0 0 42px #ff8a00);
-  transform: scale(1.12);
-}
-
-#turtle {
+.item {
   position: absolute;
-  right: 7%;
-  bottom: 8%;
-  width: 16%;
-  max-width: 180px;
-  opacity: 0;
-  transform: scale(0.4) rotate(-8deg);
-  transition: all 0.8s ease;
-  z-index: 11;
-  pointer-events: none;
-}
-
-#turtle.show {
-  opacity: 1;
-  transform: scale(1) rotate(0deg);
-  animation: turtleBounce 1.2s ease-in-out infinite alternate;
-}
-
-@keyframes turtleBounce {
-  from {
-    transform: translateY(0) scale(1);
-  }
-  to {
-    transform: translateY(-8px) scale(1.03);
-  }
-}
-
-/* Litter */
-
-.litter {
-  position: absolute;
-  width: 7%;
-  max-width: 80px;
-  min-width: 42px;
+  width: clamp(42px, 7vw, 78px);
+  z-index: 20;
   cursor: pointer;
-  z-index: 10;
-  animation: gentleWiggle 2.4s ease-in-out infinite;
-  transition: transform 0.25s, opacity 0.25s;
+  touch-action: none;
+  filter: drop-shadow(0 4px 5px rgba(0,0,0,0.18));
 }
 
-.litter:hover {
-  transform: scale(1.12) rotate(5deg);
+.animal {
+  width: clamp(46px, 8vw, 86px);
+  z-index: 22;
 }
 
-@keyframes gentleWiggle {
-  0%, 100% {
-    margin-top: 0;
+.item.hit {
+  animation: collectPop 0.35s forwards;
+}
+
+@keyframes collectPop {
+  to {
+    opacity: 0;
+    transform: scale(0.1) rotate(360deg);
   }
-  50% {
-    margin-top: -4px;
-  }
 }
-
-.litter.collected {
-  animation: none;
-}
-
-/* Sparkles */
 
 .sparkle {
   position: absolute;
-  color: gold;
-  font-size: 32px;
+  z-index: 60;
   pointer-events: none;
-  animation: sparklePop 0.75s forwards;
-  z-index: 40;
+  font-size: 30px;
+  animation: sparkle 0.75s forwards;
 }
 
-.sparkle.small {
-  font-size: 22px;
-  animation-duration: 0.65s;
-}
-
-.sparkle.big {
-  font-size: 42px;
-  animation-duration: 0.9s;
-}
-
-@keyframes sparklePop {
-  from {
-    opacity: 1;
-    transform: scale(0.4) translateY(0);
-  }
+@keyframes sparkle {
   to {
     opacity: 0;
-    transform: scale(1.8) translateY(-46px);
+    transform: scale(1.8) translateY(-45px);
   }
 }
 
-/* Encouragement popup */
-
-#encouragement {
+#messageBubble {
   position: absolute;
-  top: 22%;
+  top: 18%;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 35;
-  background: rgba(255,255,255,0.92);
+  z-index: 70;
+  background: rgba(255,255,255,0.94);
   color: #174c6b;
   font-weight: bold;
-  font-size: clamp(22px, 4vw, 44px);
-  padding: 12px 24px;
+  font-size: clamp(20px, 5vw, 44px);
+  padding: 12px 22px;
   border-radius: 999px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.18);
   opacity: 0;
   pointer-events: none;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+  text-align: center;
 }
 
-#encouragement.show {
-  animation: encouragementPop 1.1s ease forwards;
+#messageBubble.show {
+  animation: bubble 1.05s ease forwards;
 }
 
-@keyframes encouragementPop {
-  0% {
-    opacity: 0;
-    transform: translateX(-50%) scale(0.6);
-  }
-  20% {
-    opacity: 1;
-    transform: translateX(-50%) scale(1.08);
-  }
-  75% {
-    opacity: 1;
-    transform: translateX(-50%) scale(1);
-  }
-  100% {
-    opacity: 0;
-    transform: translateX(-50%) scale(0.9);
-  }
+@keyframes bubble {
+  0% { opacity: 0; transform: translateX(-50%) scale(0.7); }
+  20% { opacity: 1; transform: translateX(-50%) scale(1.08); }
+  75% { opacity: 1; transform: translateX(-50%) scale(1); }
+  100% { opacity: 0; transform: translateX(-50%) scale(0.9); }
 }
 
-/* Start and win overlays */
-
-#message,
-#winMessage {
+.screen {
   position: absolute;
   inset: 0;
-  background: rgba(255, 246, 225, 0.9);
+  z-index: 100;
+  background: rgba(255,246,225,0.9);
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  color: #174c6b;
+  justify-content: center;
   text-align: center;
-  padding: 24px;
-  z-index: 50;
+  padding: 28px;
+  color: #174c6b;
 }
 
-#message h1,
-#winMessage h1 {
-  font-size: clamp(30px, 5vw, 64px);
-  margin: 0 0 12px;
-}
-
-#message p,
-#winMessage p {
-  font-size: clamp(18px, 2.5vw, 28px);
-  margin: 0 0 24px;
-}
-
-#winMessage {
+.screen.hidden {
   display: none;
 }
 
-/* Mobile */
+.screen h1 {
+  font-size: clamp(34px, 7vw, 72px);
+  margin: 0 0 14px;
+}
+
+.screen p {
+  font-size: clamp(18px, 3.5vw, 28px);
+  max-width: 760px;
+  margin: 0 0 24px;
+}
 
 @media (max-width: 700px) {
-  .game-wrap {
-    padding: 0;
+  #hud {
+    gap: 6px;
   }
 
-  #gameArea {
-    border-radius: 0;
-    min-height: 100vh;
-    aspect-ratio: auto;
+  .hud-box {
+    padding: 7px 9px;
   }
 
-  .top-bar {
-    top: 10px;
-    left: 8px;
-    right: 8px;
-    padding: 8px 10px;
-    font-size: 13px;
+  #levelTitle {
+    max-width: 95px;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
-  button {
-    font-size: 14px;
-    padding: 9px 13px;
+  #percentText {
+    min-width: 34px;
   }
 
-  .progress-wrap {
-    gap: 5px;
+  .item {
+    width: clamp(38px, 11vw, 64px);
   }
 
-  .progress {
-    height: 14px;
+  .animal {
+    width: clamp(42px, 12vw, 70px);
   }
 
   #kimmy {
-    width: 28%;
+    width: 28vw;
+    max-width: 135px;
   }
 
   #sack {
-    left: 25%;
-    width: 17%;
-  }
-
-  .litter {
-    width: 12%;
-  }
-
-  #turtle {
-    width: 24%;
+    left: 23vw;
+    width: 16vw;
+    max-width: 82px;
   }
 }
