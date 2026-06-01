@@ -1,176 +1,343 @@
 const gameArea = document.getElementById("gameArea");
+const bg = document.getElementById("background");
+const levelTitle = document.getElementById("levelTitle");
 const progressFill = document.getElementById("progressFill");
 const percentText = document.getElementById("percentText");
-const message = document.getElementById("message");
-const winMessage = document.getElementById("winMessage");
-const startBtn = document.getElementById("startBtn");
-const restartBtn = document.getElementById("restartBtn");
-const playAgainBtn = document.getElementById("playAgainBtn");
+const scoreText = document.getElementById("scoreText");
+const messageBubble = document.getElementById("messageBubble");
 const sack = document.getElementById("sack");
-const turtle = document.getElementById("turtle");
-const encouragement = document.getElementById("encouragement");
 
-const litterImages = [
-  "images/bottle.png",
-  "images/can.png",
-  "images/wrapper.png"
+const startScreen = document.getElementById("startScreen");
+const levelScreen = document.getElementById("levelScreen");
+const winScreen = document.getElementById("winScreen");
+
+const startBtn = document.getElementById("startBtn");
+const nextLevelBtn = document.getElementById("nextLevelBtn");
+const playAgainBtn = document.getElementById("playAgainBtn");
+const pauseBtn = document.getElementById("pauseBtn");
+
+const levelCompleteTitle = document.getElementById("levelCompleteTitle");
+const levelCompleteText = document.getElementById("levelCompleteText");
+
+const levels = [
+  {
+    title: "Level 1: Town Clean-Up",
+    bg: "images/town.jpg",
+    goal: 10,
+    speed: 0.9,
+    litter: ["images/bottle.png", "images/can.png", "images/wrapper.png"],
+    animals: ["images/bird.png", "images/pigeon.png", "images/possum.png"],
+    reward: "🏘️ Town Helper",
+    message: "You stopped litter before it reached the drains!"
+  },
+  {
+    title: "Level 2: River Rescue",
+    bg: "images/riverscene.jpg",
+    goal: 12,
+    speed: 1.15,
+    litter: ["images/bottle.png", "images/can.png", "images/wrapper.png"],
+    animals: ["images/fish.png"],
+    reward: "🐟 River Guardian",
+    message: "You helped keep the river clean!"
+  },
+  {
+    title: "Level 3: Ocean Rescue",
+    bg: "images/ocean.jpg",
+    goal: 14,
+    speed: 1.35,
+    litter: ["images/bottle.png", "images/can.png", "images/wrapper.png"],
+    animals: ["images/seagull.png", "images/sea-turtle.png"],
+    reward: "🐢 Ocean Protector",
+    message: "You helped protect the ocean animals!"
+  }
 ];
 
-const totalLitter = 12;
+let currentLevel = 0;
 let score = 0;
-let gameRunning = false;
-
-const positions = [
-  [44, 72], [55, 66], [67, 75], [76, 62], [86, 72], [38, 58],
-  [50, 48], [64, 54], [73, 44], [84, 50], [58, 80], [91, 58]
-];
-
-const encouragementMessages = {
-  2: "Great job!",
-  4: "The beach is cleaner!",
-  6: "You’re helping the turtle!",
-  8: "Magic sack glowing!",
-  10: "Protecting our ocean!",
-  12: "Amazing clean-up!"
-};
+let cleaned = 0;
+let running = false;
+let paused = false;
+let lastTime = 0;
+let spawnTimer = 0;
+let animalTimer = 0;
+let activeItems = [];
 
 function startGame() {
+  currentLevel = 0;
   score = 0;
-  gameRunning = true;
+  startScreen.classList.add("hidden");
+  winScreen.classList.add("hidden");
+  levelScreen.classList.add("hidden");
+  loadLevel();
+}
 
-  message.style.display = "none";
-  winMessage.style.display = "none";
-  turtle.classList.remove("show");
-  sack.classList.remove("glow");
-  sack.classList.remove("full-glow");
-  encouragement.classList.remove("show");
-  encouragement.textContent = "";
+function loadLevel() {
+  clearItems();
 
-  updateProgress();
+  const level = levels[currentLevel];
+  cleaned = 0;
+  running = true;
+  paused = false;
+  spawnTimer = 0;
+  animalTimer = 0;
 
-  document.querySelectorAll(".litter, .sparkle").forEach(el => el.remove());
+  bg.src = level.bg;
+  levelTitle.textContent = level.title;
+  updateHud();
+  showMessage("Go!");
 
-  for (let i = 0; i < totalLitter; i++) {
-    createLitter(i);
+  for (let i = 0; i < 5; i++) spawnLitter();
+
+  requestAnimationFrame(gameLoop);
+}
+
+function gameLoop(timestamp) {
+  if (!running || paused) return;
+
+  const delta = Math.min((timestamp - lastTime) / 16.67, 3) || 1;
+  lastTime = timestamp;
+
+  spawnTimer += delta;
+  animalTimer += delta;
+
+  if (spawnTimer > 55 && activeItems.filter(i => i.type === "litter").length < 8) {
+    spawnLitter();
+    spawnTimer = 0;
+  }
+
+  if (animalTimer > 130 && activeItems.filter(i => i.type === "animal").length < 3) {
+    spawnAnimal();
+    animalTimer = 0;
+  }
+
+  moveItems(delta);
+
+  requestAnimationFrame(gameLoop);
+}
+
+function spawnLitter() {
+  const level = levels[currentLevel];
+  const src = randomFrom(level.litter);
+
+  const item = makeItem(src, "litter");
+  item.x = random(35, 95);
+  item.y = random(28, 82);
+
+  const targetX = currentLevel === 0 ? 88 : 104;
+  const targetY = currentLevel === 0 ? 82 : random(35, 70);
+
+  const angle = Math.atan2(targetY - item.y, targetX - item.x);
+  item.vx = Math.cos(angle) * level.speed * random(0.45, 0.9);
+  item.vy = Math.sin(angle) * level.speed * random(0.45, 0.9);
+  item.spin = random(-1.2, 1.2);
+
+  item.el.addEventListener("pointerdown", e => {
+    e.preventDefault();
+    collectLitter(item);
+  });
+
+  addItem(item);
+}
+
+function spawnAnimal() {
+  const level = levels[currentLevel];
+  const src = randomFrom(level.animals);
+
+  const item = makeItem(src, "animal");
+  item.x = -12;
+  item.y = random(22, 78);
+  item.vx = level.speed * random(0.6, 1.1);
+  item.vy = random(-0.15, 0.15);
+  item.spin = 0;
+
+  if (Math.random() > 0.5) {
+    item.x = 112;
+    item.vx *= -1;
+    item.el.style.transform = "scaleX(-1)";
+  }
+
+  item.el.addEventListener("pointerdown", e => {
+    e.preventDefault();
+    tapAnimal(item);
+  });
+
+  addItem(item);
+}
+
+function makeItem(src, type) {
+  const el = document.createElement("img");
+  el.src = src;
+  el.className = `item ${type === "animal" ? "animal" : ""}`;
+  el.alt = type;
+  gameArea.appendChild(el);
+
+  return {
+    el,
+    type,
+    x: 0,
+    y: 0,
+    vx: 0,
+    vy: 0,
+    spin: 0,
+    rot: random(-20, 20)
+  };
+}
+
+function addItem(item) {
+  activeItems.push(item);
+  renderItem(item);
+}
+
+function moveItems(delta) {
+  for (const item of [...activeItems]) {
+    item.x += item.vx * delta;
+    item.y += item.vy * delta;
+    item.rot += item.spin * delta;
+
+    renderItem(item);
+
+    if (item.type === "litter" && (item.x > 104 || item.y > 92)) {
+      missLitter(item);
+    }
+
+    if (item.type === "animal" && (item.x < -18 || item.x > 118)) {
+      removeItem(item);
+    }
   }
 }
 
-function createLitter(index) {
-  const item = document.createElement("img");
-  item.src = litterImages[index % litterImages.length];
-  item.className = "litter";
-  item.alt = "Piece of litter";
+function renderItem(item) {
+  item.el.style.left = `${item.x}%`;
+  item.el.style.top = `${item.y}%`;
 
-  const [left, top] = positions[index];
-  item.style.left = `${left}%`;
-  item.style.top = `${top}%`;
-
-  const rotation = Math.floor(Math.random() * 50) - 25;
-  const delay = (Math.random() * 1.2).toFixed(2);
-  item.dataset.rotation = rotation;
-  item.style.transform = `rotate(${rotation}deg)`;
-  item.style.animationDelay = `${delay}s`;
-
-  item.addEventListener("click", () => collectLitter(item));
-  item.addEventListener("touchstart", (event) => {
-    event.preventDefault();
-    collectLitter(item);
-  }, { once: true });
-
-  gameArea.appendChild(item);
+  if (item.type === "litter") {
+    item.el.style.transform = `translate(-50%, -50%) rotate(${item.rot}deg)`;
+  }
 }
 
 function collectLitter(item) {
-  if (!gameRunning || item.classList.contains("collected")) return;
+  if (!running) return;
 
-  item.classList.add("collected");
+  sparkleAt(item.x, item.y);
+  item.el.classList.add("hit");
 
-  const rect = item.getBoundingClientRect();
-  const gameRect = gameArea.getBoundingClientRect();
-
-  const x = rect.left - gameRect.left + rect.width / 2;
-  const y = rect.top - gameRect.top + rect.height / 2;
-
-  showSparkleBurst(x, y);
-
-  item.style.opacity = "0";
-  item.style.transform = "scale(0.1) rotate(360deg)";
-
-  setTimeout(() => item.remove(), 250);
-
-  score++;
-  updateProgress();
+  cleaned++;
+  score += 10;
   pulseSack();
+  updateHud();
 
-  if (encouragementMessages[score]) {
-    showEncouragement(encouragementMessages[score]);
-  }
+  if (cleaned === 3) showMessage("Great job!");
+  if (cleaned === 6) showMessage("Keep going!");
+  if (cleaned === 9) showMessage("Magic sack glowing!");
 
-  if (score >= totalLitter) {
-    finishGame();
+  setTimeout(() => removeItem(item), 250);
+
+  if (cleaned >= levels[currentLevel].goal) {
+    completeLevel();
   }
 }
 
-function updateProgress() {
-  const percent = Math.round((score / totalLitter) * 100);
+function missLitter(item) {
+  score = Math.max(0, score - 5);
+  showMessage("Catch the rubbish!");
+  removeItem(item);
+  updateHud();
+}
+
+function tapAnimal(item) {
+  score = Math.max(0, score - 10);
+  showMessage("Careful! Don’t tap animals.");
+  sparkleAt(item.x, item.y, "💙");
+  removeItem(item);
+  updateHud();
+}
+
+function completeLevel() {
+  running = false;
+  clearItems();
+
+  const level = levels[currentLevel];
+
+  setTimeout(() => {
+    levelCompleteTitle.textContent = level.reward;
+    levelCompleteText.textContent = level.message;
+
+    if (currentLevel === levels.length - 1) {
+      levelScreen.classList.add("hidden");
+      winScreen.classList.remove("hidden");
+    } else {
+      nextLevelBtn.textContent = "Next Level";
+      levelScreen.classList.remove("hidden");
+    }
+  }, 600);
+}
+
+function nextLevel() {
+  currentLevel++;
+  levelScreen.classList.add("hidden");
+  loadLevel();
+}
+
+function updateHud() {
+  const level = levels[currentLevel];
+  const percent = Math.min(100, Math.round((cleaned / level.goal) * 100));
   progressFill.style.width = `${percent}%`;
   percentText.textContent = `${percent}%`;
+  scoreText.textContent = score;
 }
 
 function pulseSack() {
   sack.classList.add("glow");
-  setTimeout(() => {
-    if (score < totalLitter) {
-      sack.classList.remove("glow");
-    }
-  }, 350);
+  setTimeout(() => sack.classList.remove("glow"), 300);
 }
 
-function showSparkleBurst(x, y) {
-  createSparkle(x, y, "big", 0, 0);
-  createSparkle(x - 24, y + 8, "small", -18, 8);
-  createSparkle(x + 24, y + 8, "small", 18, 8);
-  createSparkle(x - 8, y + 24, "small", -6, 16);
-  createSparkle(x + 8, y - 12, "small", 6, -8);
+function showMessage(text) {
+  messageBubble.textContent = text;
+  messageBubble.classList.remove("show");
+  void messageBubble.offsetWidth;
+  messageBubble.classList.add("show");
 }
 
-function createSparkle(x, y, sizeClass, offsetX, offsetY) {
-  const sparkle = document.createElement("div");
-  sparkle.className = `sparkle ${sizeClass}`;
-  sparkle.textContent = "✨";
-  sparkle.style.left = `${x + offsetX}px`;
-  sparkle.style.top = `${y + offsetY}px`;
-
-  gameArea.appendChild(sparkle);
-
-  setTimeout(() => sparkle.remove(), 900);
+function sparkleAt(x, y, icon = "✨") {
+  for (let i = 0; i < 4; i++) {
+    const s = document.createElement("div");
+    s.className = "sparkle";
+    s.textContent = icon;
+    s.style.left = `${x + random(-2, 2)}%`;
+    s.style.top = `${y + random(-2, 2)}%`;
+    gameArea.appendChild(s);
+    setTimeout(() => s.remove(), 800);
+  }
 }
 
-function showEncouragement(text) {
-  encouragement.textContent = text;
-  encouragement.classList.remove("show");
-
-  void encouragement.offsetWidth;
-
-  encouragement.classList.add("show");
+function clearItems() {
+  activeItems.forEach(item => item.el.remove());
+  activeItems = [];
 }
 
-function finishGame() {
-  gameRunning = false;
+function removeItem(item) {
+  item.el.remove();
+  activeItems = activeItems.filter(i => i !== item);
+}
 
-  setTimeout(() => {
-    turtle.classList.add("show");
-    sack.classList.add("full-glow");
-    showEncouragement("Beach saved!");
-  }, 350);
+function random(min, max) {
+  return Math.random() * (max - min) + min;
+}
 
-  setTimeout(() => {
-    winMessage.style.display = "flex";
-  }, 1500);
+function randomFrom(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
 }
 
 startBtn.addEventListener("click", startGame);
-restartBtn.addEventListener("click", startGame);
+nextLevelBtn.addEventListener("click", nextLevel);
 playAgainBtn.addEventListener("click", startGame);
 
-updateProgress();
+pauseBtn.addEventListener("click", () => {
+  if (!running) return;
+  paused = !paused;
+  pauseBtn.textContent = paused ? "Resume" : "Pause";
+  if (!paused) {
+    lastTime = performance.now();
+    requestAnimationFrame(gameLoop);
+  }
+});
