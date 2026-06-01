@@ -12,9 +12,17 @@
       <img src="images/beach.jpg" id="beach" alt="Beach background" />
 
       <div class="top-bar">
-        <div>Cleaned: <span id="score">0</span>/<span id="total">10</span></div>
+        <div class="progress-wrap">
+          <span>Magic Sack</span>
+          <div class="progress">
+            <div id="progressFill"></div>
+          </div>
+          <span id="percentText">0%</span>
+        </div>
         <button id="restartBtn">Play Again</button>
       </div>
+
+      <div id="encouragement"></div>
 
       <img src="images/kimmy.png" id="kimmy" alt="Kimmy" />
       <img src="images/sack.png" id="sack" alt="Kimmy's magic sack" />
@@ -22,13 +30,13 @@
 
       <div id="message">
         <h1>Kimmy's Beach Clean-Up</h1>
-        <p>Tap the rubbish to help clean the beach.</p>
+        <p>Tap the rubbish to help fill Kimmy's magic sack.</p>
         <button id="startBtn">Start Cleaning</button>
       </div>
 
       <div id="winMessage">
-        <h1>You’re a Little Planet Helper!</h1>
-        <p>You helped clean the beach and protect the turtle.</p>
+        <h1>🌎 Little Planet Helper 🌎</h1>
+        <p>Small actions make a big difference!</p>
         <button id="playAgainBtn">Play Again</button>
       </div>
     </section>
