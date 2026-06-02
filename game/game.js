@@ -79,6 +79,16 @@ function loadLevel() {
   clearItems();
 
   const level = levels[currentLevel];
+  sack.classList.remove("fuller");
+  sack.classList.remove("magic");
+
+if (currentLevel === 1) {
+  sack.classList.add("fuller");
+}
+
+if (currentLevel === 2) {
+  sack.classList.add("magic");
+}
   cleaned = 0;
   missed = 0;
   animalMistakes = 0;
