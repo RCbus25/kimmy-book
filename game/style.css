@@ -108,7 +108,7 @@ button:active {
   position: absolute;
   left: 2%;
   bottom: 1%;
-  width: clamp(135px, 22vw, 270px);
+  width: clamp(170px, 22vw, 270px);
   z-index: 30;
   pointer-events: none;
 }
@@ -117,7 +117,7 @@ button:active {
   position: absolute;
   left: clamp(130px, 22vw, 270px);
   bottom: 3%;
-  width: clamp(82px, 13vw, 150px);
+  width: clamp(110px, 16vw, 180px);
   z-index: 31;
   pointer-events: none;
   transition: transform 0.2s, filter 0.2s;
