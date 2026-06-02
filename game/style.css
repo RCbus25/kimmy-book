@@ -41,7 +41,7 @@ html, body {
 }
 
 .hud-box {
-  background: rgba(255,255,255,0.9);
+  background: rgba(255,255,255,0.92);
   color: #174c6b;
   border-radius: 999px;
   padding: 8px 12px;
@@ -49,7 +49,7 @@ html, body {
   align-items: center;
   gap: 8px;
   box-shadow: 0 4px 14px rgba(0,0,0,0.14);
-  font-size: clamp(12px, 2.8vw, 18px);
+  font-size: clamp(12px, 2.6vw, 18px);
 }
 
 .hud-box:first-child {
@@ -67,12 +67,12 @@ html, body {
 
 .progress {
   flex: 1;
-  height: 14px;
+  height: 16px;
   background: #d8f3ff;
   border-radius: 999px;
   overflow: hidden;
   border: 2px solid white;
-  min-width: 60px;
+  min-width: 70px;
 }
 
 #progressFill {
@@ -106,31 +106,31 @@ button:active {
 
 #kimmy {
   position: absolute;
-  left: 3%;
-  bottom: 2%;
-  width: clamp(92px, 17vw, 190px);
+  left: 2%;
+  bottom: 1%;
+  width: clamp(135px, 22vw, 270px);
   z-index: 30;
   pointer-events: none;
 }
 
 #sack {
   position: absolute;
-  left: clamp(92px, 17vw, 190px);
+  left: clamp(130px, 22vw, 270px);
   bottom: 3%;
-  width: clamp(58px, 10vw, 115px);
+  width: clamp(82px, 13vw, 150px);
   z-index: 31;
   pointer-events: none;
   transition: transform 0.2s, filter 0.2s;
 }
 
 #sack.glow {
-  transform: scale(1.08);
-  filter: drop-shadow(0 0 12px gold) drop-shadow(0 0 24px #ff8a00);
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 14px gold) drop-shadow(0 0 28px #ff8a00);
 }
 
 .item {
   position: absolute;
-  width: clamp(85px, 13vw, 140px);
+  width: clamp(100px, 12vw, 155px);
   z-index: 20;
   cursor: pointer;
   touch-action: none;
@@ -138,7 +138,7 @@ button:active {
 }
 
 .animal {
-  width: clamp(46px, 8vw, 86px);
+  width: clamp(90px, 10vw, 130px);
   z-index: 22;
 }
 
@@ -157,8 +157,8 @@ button:active {
   position: absolute;
   z-index: 60;
   pointer-events: none;
-  font-size: 30px;
-  animation: sparkle 0.75s forwards;
+  font-size: 34px;
+  animation: sparkle 0.8s forwards;
 }
 
 @keyframes sparkle {
@@ -201,7 +201,7 @@ button:active {
   position: absolute;
   inset: 0;
   z-index: 100;
-  background: rgba(255,246,225,0.9);
+  background: rgba(255,246,225,0.92);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -223,7 +223,12 @@ button:active {
 .screen p {
   font-size: clamp(18px, 3.5vw, 28px);
   max-width: 760px;
-  margin: 0 0 24px;
+  margin: 0 0 18px;
+}
+
+#levelStats,
+#finalStats {
+  font-weight: bold;
 }
 
 @media (max-width: 700px) {
@@ -246,21 +251,23 @@ button:active {
   }
 
   .item {
-  width: clamp(70px, 16vw, 120px);
+    width: clamp(82px, 22vw, 125px);
   }
 
   .animal {
-    width: clamp(42px, 12vw, 70px);
+    width: clamp(70px, 18vw, 105px);
   }
 
   #kimmy {
-    width: 28vw;
-    max-width: 135px;
+    width: clamp(135px, 38vw, 190px);
   }
 
   #sack {
-    left: 23vw;
-    width: 16vw;
-    max-width: 82px;
+    left: clamp(115px, 33vw, 170px);
+    width: clamp(82px, 22vw, 110px);
+  }
+
+  .progress {
+    height: 14px;
   }
 }
