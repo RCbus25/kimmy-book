@@ -131,7 +131,7 @@ function spawnLitter() {
   item.x = random(10, 35);
   item.y = random(22, 75);
 
-  const targetX = currentLevel === 0 ? 92 : 106;
+  const targetX = 110;
   const targetY = currentLevel === 0 ? 86 : random(35, 72);
 
   const angle = Math.atan2(targetY - item.y, targetX - item.x);
