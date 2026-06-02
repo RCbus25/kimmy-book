@@ -18,13 +18,15 @@ const pauseBtn = document.getElementById("pauseBtn");
 
 const levelCompleteTitle = document.getElementById("levelCompleteTitle");
 const levelCompleteText = document.getElementById("levelCompleteText");
+const levelStats = document.getElementById("levelStats");
+const finalStats = document.getElementById("finalStats");
 
 const levels = [
   {
     title: "Level 1: Town Clean-Up",
     bg: "images/town.jpg",
-    goal: 10,
-    speed: 0.35,
+    goal: 8,
+    speed: 0.16,
     litter: ["images/bottle.png", "images/can.png", "images/wrapper.png"],
     animals: ["images/bird.png", "images/pigeon.png"],
     reward: "🏘️ Town Helper",
@@ -33,8 +35,8 @@ const levels = [
   {
     title: "Level 2: River Rescue",
     bg: "images/riverscene.jpg",
-    goal: 12,
-    speed: 0.45,
+    goal: 10,
+    speed: 0.19,
     litter: ["images/bottle.png", "images/can.png", "images/wrapper.png"],
     animals: ["images/fish.png"],
     reward: "🐟 River Guardian",
@@ -43,8 +45,8 @@ const levels = [
   {
     title: "Level 3: Ocean Rescue",
     bg: "images/ocean.jpg",
-    goal: 14,
-    speed: 0.55,
+    goal: 12,
+    speed: 0.22,
     litter: ["images/bottle.png", "images/can.png", "images/wrapper.png"],
     animals: ["images/seagull.png", "images/sea-turtle.png"],
     reward: "🐢 Ocean Protector",
@@ -55,6 +57,8 @@ const levels = [
 let currentLevel = 0;
 let score = 0;
 let cleaned = 0;
+let missed = 0;
+let animalMistakes = 0;
 let running = false;
 let paused = false;
 let lastTime = 0;
@@ -76,17 +80,21 @@ function loadLevel() {
 
   const level = levels[currentLevel];
   cleaned = 0;
+  missed = 0;
+  animalMistakes = 0;
   running = true;
   paused = false;
+  lastTime = performance.now();
   spawnTimer = 0;
   animalTimer = 0;
+  pauseBtn.textContent = "Pause";
 
   bg.src = level.bg;
   levelTitle.textContent = level.title;
   updateHud();
   showMessage("Go!");
 
-  for (let i = 0; i < 5; i++) spawnLitter();
+  for (let i = 0; i < 4; i++) spawnLitter();
 
   requestAnimationFrame(gameLoop);
 }
@@ -100,12 +108,12 @@ function gameLoop(timestamp) {
   spawnTimer += delta;
   animalTimer += delta;
 
-  if (spawnTimer > 55 && activeItems.filter(i => i.type === "litter").length < 8) {
+  if (spawnTimer > 95 && activeItems.filter(i => i.type === "litter").length < 6) {
     spawnLitter();
     spawnTimer = 0;
   }
 
-  if (animalTimer > 130 && activeItems.filter(i => i.type === "animal").length < 3) {
+  if (animalTimer > 180 && activeItems.filter(i => i.type === "animal").length < 2) {
     spawnAnimal();
     animalTimer = 0;
   }
@@ -118,18 +126,20 @@ function gameLoop(timestamp) {
 function spawnLitter() {
   const level = levels[currentLevel];
   const src = randomFrom(level.litter);
-
   const item = makeItem(src, "litter");
-  item.x = random(45, 95);
-  item.y = random(28, 82);
 
-  const targetX = currentLevel === 0 ? 88 : 104;
-  const targetY = currentLevel === 0 ? 82 : random(35, 70);
+  item.x = random(48, 92);
+  item.y = random(28, 78);
+
+  const targetX = currentLevel === 0 ? 92 : 106;
+  const targetY = currentLevel === 0 ? 86 : random(35, 72);
 
   const angle = Math.atan2(targetY - item.y, targetX - item.x);
-  item.vx = Math.cos(angle) * level.speed * random(0.18, 0.40);
-  item.vy = Math.sin(angle) * level.speed * random(0.18, 0.40);
-  item.spin = random(-1.2, 1.2);
+  const drift = random(0.18, 0.34);
+
+  item.vx = Math.cos(angle) * level.speed * drift;
+  item.vy = Math.sin(angle) * level.speed * drift;
+  item.spin = random(-0.35, 0.35);
 
   item.el.addEventListener("pointerdown", e => {
     e.preventDefault();
@@ -142,18 +152,18 @@ function spawnLitter() {
 function spawnAnimal() {
   const level = levels[currentLevel];
   const src = randomFrom(level.animals);
-
   const item = makeItem(src, "animal");
+
   item.x = -12;
-  item.y = random(22, 78);
-  item.vx = level.speed * random(0.6, 1.1);
-  item.vy = random(-0.15, 0.15);
+  item.y = random(24, 74);
+  item.vx = level.speed * random(0.45, 0.75);
+  item.vy = random(-0.06, 0.06);
   item.spin = 0;
 
   if (Math.random() > 0.5) {
     item.x = 112;
     item.vx *= -1;
-    item.el.style.transform = "scaleX(-1)";
+    item.facingLeft = true;
   }
 
   item.el.addEventListener("pointerdown", e => {
@@ -179,7 +189,8 @@ function makeItem(src, type) {
     vx: 0,
     vy: 0,
     spin: 0,
-    rot: random(-20, 20)
+    rot: random(-20, 20),
+    facingLeft: false
   };
 }
 
@@ -196,7 +207,7 @@ function moveItems(delta) {
 
     renderItem(item);
 
-    if (item.type === "litter" && (item.x > 104 || item.y > 92)) {
+    if (item.type === "litter" && (item.x > 105 || item.y > 94)) {
       missLitter(item);
     }
 
@@ -212,11 +223,15 @@ function renderItem(item) {
 
   if (item.type === "litter") {
     item.el.style.transform = `translate(-50%, -50%) rotate(${item.rot}deg)`;
+  } else if (item.facingLeft) {
+    item.el.style.transform = "translate(-50%, -50%) scaleX(-1)";
+  } else {
+    item.el.style.transform = "translate(-50%, -50%)";
   }
 }
 
 function collectLitter(item) {
-  if (!running) return;
+  if (!running || item.el.classList.contains("hit")) return;
 
   sparkleAt(item.x, item.y);
   item.el.classList.add("hit");
@@ -226,9 +241,10 @@ function collectLitter(item) {
   pulseSack();
   updateHud();
 
-  if (cleaned === 3) showMessage("Great job!");
-  if (cleaned === 6) showMessage("Keep going!");
-  if (cleaned === 9) showMessage("Magic sack glowing!");
+  if (cleaned === 2) showMessage("Great job!");
+  if (cleaned === 4) showMessage("Keep going!");
+  if (cleaned === 6) showMessage("Magic sack glowing!");
+  if (cleaned === levels[currentLevel].goal - 1) showMessage("Almost there!");
 
   setTimeout(() => removeItem(item), 250);
 
@@ -238,6 +254,7 @@ function collectLitter(item) {
 }
 
 function missLitter(item) {
+  missed++;
   score = Math.max(0, score - 5);
   showMessage("Catch the rubbish!");
   removeItem(item);
@@ -245,6 +262,7 @@ function missLitter(item) {
 }
 
 function tapAnimal(item) {
+  animalMistakes++;
   score = Math.max(0, score - 10);
   showMessage("Careful! Don’t tap animals.");
   sparkleAt(item.x, item.y, "💙");
@@ -261,20 +279,29 @@ function completeLevel() {
   setTimeout(() => {
     levelCompleteTitle.textContent = level.reward;
     levelCompleteText.textContent = level.message;
+    levelStats.textContent =
+      `Cleaned: ${cleaned}  •  Missed: ${missed}  •  Animal taps: ${animalMistakes}  •  Score: ${score}`;
+
+    levelScreen.classList.remove("hidden");
 
     if (currentLevel === levels.length - 1) {
-      levelScreen.classList.add("hidden");
-      winScreen.classList.remove("hidden");
+      nextLevelBtn.textContent = "Finish";
     } else {
       nextLevelBtn.textContent = "Next Level";
-      levelScreen.classList.remove("hidden");
     }
-  }, 600);
+  }, 500);
 }
 
 function nextLevel() {
-  currentLevel++;
   levelScreen.classList.add("hidden");
+
+  if (currentLevel === levels.length - 1) {
+    finalStats.textContent = `Final Score: ${score} — Small actions make a big difference!`;
+    winScreen.classList.remove("hidden");
+    return;
+  }
+
+  currentLevel++;
   loadLevel();
 }
 
@@ -288,7 +315,7 @@ function updateHud() {
 
 function pulseSack() {
   sack.classList.add("glow");
-  setTimeout(() => sack.classList.remove("glow"), 300);
+  setTimeout(() => sack.classList.remove("glow"), 320);
 }
 
 function showMessage(text) {
@@ -299,14 +326,14 @@ function showMessage(text) {
 }
 
 function sparkleAt(x, y, icon = "✨") {
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < 5; i++) {
     const s = document.createElement("div");
     s.className = "sparkle";
     s.textContent = icon;
-    s.style.left = `${x + random(-2, 2)}%`;
-    s.style.top = `${y + random(-2, 2)}%`;
+    s.style.left = `${x + random(-2.5, 2.5)}%`;
+    s.style.top = `${y + random(-2.5, 2.5)}%`;
     gameArea.appendChild(s);
-    setTimeout(() => s.remove(), 800);
+    setTimeout(() => s.remove(), 850);
   }
 }
 
