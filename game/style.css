@@ -115,9 +115,9 @@ button:active {
 
 #sack {
   position: absolute;
-  left: clamp(170px, 24vw, 320px);
+  left: clamp(190px, 28vw, 360px);
   bottom: 4%;
-  width: clamp(140px, 20vw, 220px);
+  width: clamp(220px, 32vw, 360px);
   z-index: 31;
   pointer-events: none;
   transition: all 0.4s ease;
@@ -129,16 +129,19 @@ button:active {
 }
 
 #sack.fuller {
-  transform: scale(1.25);
-  filter: drop-shadow(0 0 8px rgba(255,200,0,0.4));
+  transform: scale(1.4);
+  filter:
+    drop-shadow(0 0 8px rgba(255,200,0,0.5))
+    drop-shadow(0 0 18px rgba(255,180,0,0.4));
 }
 
 #sack.magic {
-  transform: scale(1.45);
+  transform: scale(1.8);
   filter:
-    drop-shadow(0 0 10px gold)
-    drop-shadow(0 0 20px orange)
-    drop-shadow(0 0 35px gold);
+    drop-shadow(0 0 12px gold)
+    drop-shadow(0 0 24px orange)
+    drop-shadow(0 0 40px gold)
+    drop-shadow(0 0 60px #ffd700);
 }
 
 .item {
@@ -276,10 +279,10 @@ button:active {
   }
 
   #sack {
-    left: clamp(145px, 36vw, 210px);
-    bottom: 4%;
-    width: clamp(120px, 30vw, 170px);
-  }
+  left: clamp(160px, 40vw, 240px);
+  bottom: 4%;
+  width: clamp(180px, 42vw, 260px);
+}
 
   .progress {
     height: 14px;
