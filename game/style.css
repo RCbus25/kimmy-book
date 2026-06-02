@@ -115,8 +115,8 @@ button:active {
 
 #sack {
   position: absolute;
-  left: clamp(130px, 22vw, 270px);
-  bottom: 3%;
+  left: clamp(180px, 22vw, 300px);
+  bottom: 4%;
   width: clamp(120px, 18vw, 190px);
   z-index: 31;
   pointer-events: none;
