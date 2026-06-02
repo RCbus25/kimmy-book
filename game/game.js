@@ -26,7 +26,7 @@ const levels = [
     goal: 10,
     speed: 0.35,
     litter: ["images/bottle.png", "images/can.png", "images/wrapper.png"],
-    animals: ["images/bird.png", "images/pigeon.png", "images/possum.png"],
+    animals: ["images/bird.png", "images/pigeon.png"],
     reward: "🏘️ Town Helper",
     message: "You stopped litter before it reached the drains!"
   },
@@ -120,15 +120,15 @@ function spawnLitter() {
   const src = randomFrom(level.litter);
 
   const item = makeItem(src, "litter");
-  item.x = random(35, 95);
+  item.x = random(45, 95);
   item.y = random(28, 82);
 
   const targetX = currentLevel === 0 ? 88 : 104;
   const targetY = currentLevel === 0 ? 82 : random(35, 70);
 
   const angle = Math.atan2(targetY - item.y, targetX - item.x);
-  item.vx = Math.cos(angle) * level.speed * random(0.25, 0.55);
-  item.vy = Math.sin(angle) * level.speed * random(0.25, 0.55);
+  item.vx = Math.cos(angle) * level.speed * random(0.18, 0.40);
+  item.vy = Math.sin(angle) * level.speed * random(0.18, 0.40);
   item.spin = random(-1.2, 1.2);
 
   item.el.addEventListener("pointerdown", e => {
