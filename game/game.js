@@ -128,8 +128,8 @@ function spawnLitter() {
   const src = randomFrom(level.litter);
   const item = makeItem(src, "litter");
 
-  item.x = random(48, 92);
-  item.y = random(28, 78);
+  item.x = random(10, 35);
+  item.y = random(22, 75);
 
   const targetX = currentLevel === 0 ? 92 : 106;
   const targetY = currentLevel === 0 ? 86 : random(35, 72);
