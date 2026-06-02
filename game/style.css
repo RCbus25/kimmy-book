@@ -108,7 +108,7 @@ button:active {
   position: absolute;
   left: 2%;
   bottom: 1%;
-  width: clamp(170px, 22vw, 270px);
+  width: clamp(180px, 28vw, 320px);
   z-index: 30;
   pointer-events: none;
 }
@@ -117,7 +117,7 @@ button:active {
   position: absolute;
   left: clamp(130px, 22vw, 270px);
   bottom: 3%;
-  width: clamp(110px, 16vw, 180px);
+  width: clamp(120px, 18vw, 190px);
   z-index: 31;
   pointer-events: none;
   transition: transform 0.2s, filter 0.2s;
@@ -126,6 +126,18 @@ button:active {
 #sack.glow {
   transform: scale(1.1);
   filter: drop-shadow(0 0 14px gold) drop-shadow(0 0 28px #ff8a00);
+}
+
+#sack.fuller {
+  transform: scale(1.25);
+}
+
+#sack.magic {
+  transform: scale(1.45);
+  filter:
+    drop-shadow(0 0 10px gold)
+    drop-shadow(0 0 20px orange)
+    drop-shadow(0 0 35px gold);
 }
 
 .item {
@@ -263,7 +275,7 @@ button:active {
   }
 
   #sack {
-    left: clamp(115px, 33vw, 170px);
+    left: clamp(140px, 26vw, 260px);
     width: clamp(82px, 22vw, 110px);
   }
 
