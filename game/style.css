@@ -130,7 +130,7 @@ button:active {
 
 .item {
   position: absolute;
-  width: clamp(42px, 7vw, 78px);
+  width: clamp(85px, 13vw, 140px);
   z-index: 20;
   cursor: pointer;
   touch-action: none;
@@ -246,7 +246,7 @@ button:active {
   }
 
   .item {
-    width: clamp(38px, 11vw, 64px);
+  width: clamp(70px, 16vw, 120px);
   }
 
   .animal {
