@@ -13,14 +13,10 @@
     <div id="hud">
       <div class="hud-box">
         <strong id="levelTitle">Level 1: Town Clean-Up</strong>
-        <div class="progress">
-          <div id="progressFill"></div>
-        </div>
+        <div class="progress"><div id="progressFill"></div></div>
         <span id="percentText">0%</span>
       </div>
-      <div class="hud-box small">
-        ⭐ <span id="scoreText">0</span>
-      </div>
+      <div class="hud-box small">⭐ <span id="scoreText">0</span></div>
       <button id="pauseBtn">Pause</button>
     </div>
 
@@ -38,12 +34,13 @@
     <div id="levelScreen" class="screen hidden">
       <h1 id="levelCompleteTitle">Level Complete!</h1>
       <p id="levelCompleteText">Great job!</p>
+      <p id="levelStats"></p>
       <button id="nextLevelBtn">Next Level</button>
     </div>
 
     <div id="winScreen" class="screen hidden">
       <h1>🌎 Little Planet Helper 🌎</h1>
-      <p>Small actions make a big difference!</p>
+      <p id="finalStats">Small actions make a big difference!</p>
       <button id="playAgainBtn">Play Again</button>
     </div>
   </main>
