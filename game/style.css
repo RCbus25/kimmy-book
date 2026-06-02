@@ -115,12 +115,12 @@ button:active {
 
 #sack {
   position: absolute;
-  left: clamp(180px, 22vw, 300px);
+  left: clamp(170px, 24vw, 320px);
   bottom: 4%;
-  width: clamp(120px, 18vw, 190px);
+  width: clamp(140px, 20vw, 220px);
   z-index: 31;
   pointer-events: none;
-  transition: transform 0.2s, filter 0.2s;
+  transition: all 0.4s ease;
 }
 
 #sack.glow {
@@ -130,6 +130,7 @@ button:active {
 
 #sack.fuller {
   transform: scale(1.25);
+  filter: drop-shadow(0 0 8px rgba(255,200,0,0.4));
 }
 
 #sack.magic {
