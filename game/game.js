@@ -2,7 +2,7 @@ const gameArea = document.getElementById("gameArea");
 const bg = document.getElementById("background");
 const levelTitle = document.getElementById("levelTitle");
 const progressFill = document.getElementById("progressFill");
-const percentText = document.getElementById("percentText");
+const timeText = document.getElementById("timeText");
 const scoreText = document.getElementById("scoreText");
 const messageBubble = document.getElementById("messageBubble");
 const sack = document.getElementById("sack");
@@ -25,17 +25,17 @@ const levels = [
   {
     title: "Level 1: Town Clean-Up",
     bg: "images/town.jpg",
-    goal: 8,
+    timeLimit: 45,
     speed: 0.16,
     litter: ["images/bottle.png", "images/can.png", "images/wrapper.png"],
     animals: ["images/bird.png", "images/pigeon.png"],
     reward: "🏘️ Town Helper",
-    message: "You stopped litter before it reached the drains!"
+    message: "You stopped litter before it reached the waterways!"
   },
   {
     title: "Level 2: River Rescue",
     bg: "images/riverscene.jpg",
-    goal: 10,
+    timeLimit: 45,
     speed: 0.19,
     litter: ["images/bottle.png", "images/can.png", "images/wrapper.png"],
     animals: ["images/fish.png"],
@@ -45,7 +45,7 @@ const levels = [
   {
     title: "Level 3: Ocean Rescue",
     bg: "images/ocean.jpg",
-    goal: 12,
+    timeLimit: 60,
     speed: 0.22,
     litter: ["images/bottle.png", "images/can.png", "images/wrapper.png"],
     animals: ["images/seagull.png", "images/sea-turtle.png"],
@@ -59,19 +59,29 @@ let score = 0;
 let cleaned = 0;
 let missed = 0;
 let animalMistakes = 0;
+let totalCleaned = 0;
+let totalMissed = 0;
+let totalAnimalMistakes = 0;
+
 let running = false;
 let paused = false;
 let lastTime = 0;
 let spawnTimer = 0;
 let animalTimer = 0;
+let timeRemaining = 45;
 let activeItems = [];
 
 function startGame() {
   currentLevel = 0;
   score = 0;
+  totalCleaned = 0;
+  totalMissed = 0;
+  totalAnimalMistakes = 0;
+
   startScreen.classList.add("hidden");
   winScreen.classList.add("hidden");
   levelScreen.classList.add("hidden");
+
   loadLevel();
 }
 
@@ -79,32 +89,37 @@ function loadLevel() {
   clearItems();
 
   const level = levels[currentLevel];
+
   sack.classList.remove("fuller");
   sack.classList.remove("magic");
 
-if (currentLevel === 1) {
-  sack.classList.add("fuller");
-}
+  if (currentLevel === 1) {
+    sack.classList.add("fuller");
+  }
 
-if (currentLevel === 2) {
-  sack.classList.add("magic");
-}
+  if (currentLevel === 2) {
+    sack.classList.add("magic");
+  }
+
   cleaned = 0;
   missed = 0;
   animalMistakes = 0;
+  timeRemaining = level.timeLimit;
+
   running = true;
   paused = false;
   lastTime = performance.now();
   spawnTimer = 0;
   animalTimer = 0;
-  pauseBtn.textContent = "Pause";
 
+  pauseBtn.textContent = "Pause";
   bg.src = level.bg;
   levelTitle.textContent = level.title;
+
   updateHud();
   showMessage("Go!");
 
-  for (let i = 0; i < 4; i++) spawnLitter();
+  for (let i = 0; i < 8; i++) spawnLitter();
 
   requestAnimationFrame(gameLoop);
 }
@@ -112,23 +127,34 @@ if (currentLevel === 2) {
 function gameLoop(timestamp) {
   if (!running || paused) return;
 
-  const delta = Math.min((timestamp - lastTime) / 16.67, 3) || 1;
+  const elapsedMs = timestamp - lastTime;
+  const delta = Math.min(elapsedMs / 16.67, 3) || 1;
   lastTime = timestamp;
+
+  timeRemaining -= elapsedMs / 1000;
+
+  if (timeRemaining <= 0) {
+    timeRemaining = 0;
+    updateHud();
+    completeLevel();
+    return;
+  }
 
   spawnTimer += delta;
   animalTimer += delta;
 
-  if (spawnTimer > 95 && activeItems.filter(i => i.type === "litter").length < 6) {
+  if (spawnTimer > 70 && activeItems.filter(i => i.type === "litter").length < 10) {
     spawnLitter();
     spawnTimer = 0;
   }
 
-  if (animalTimer > 180 && activeItems.filter(i => i.type === "animal").length < 2) {
+  if (animalTimer > 150 && activeItems.filter(i => i.type === "animal").length < 3) {
     spawnAnimal();
     animalTimer = 0;
   }
 
   moveItems(delta);
+  updateHud();
 
   requestAnimationFrame(gameLoop);
 }
@@ -138,11 +164,11 @@ function spawnLitter() {
   const src = randomFrom(level.litter);
   const item = makeItem(src, "litter");
 
-  item.x = random(10, 35);
-  item.y = random(22, 75);
+  item.x = random(8, 28);
+  item.y = random(24, 78);
 
   const targetX = 110;
-  const targetY = currentLevel === 0 ? 86 : random(35, 72);
+  const targetY = random(28, 82);
 
   const angle = Math.atan2(targetY - item.y, targetX - item.x);
   const drift = random(0.18, 0.34);
@@ -217,7 +243,7 @@ function moveItems(delta) {
 
     renderItem(item);
 
-    if (item.type === "litter" && (item.x > 105 || item.y > 94)) {
+    if (item.type === "litter" && item.x > 108) {
       missLitter(item);
     }
 
@@ -247,24 +273,24 @@ function collectLitter(item) {
   item.el.classList.add("hit");
 
   cleaned++;
+  totalCleaned++;
   score += 10;
+
   pulseSack();
   updateHud();
 
-  if (cleaned === 2) showMessage("Great job!");
-  if (cleaned === 4) showMessage("Keep going!");
-  if (cleaned === 6) showMessage("Magic sack glowing!");
-  if (cleaned === levels[currentLevel].goal - 1) showMessage("Almost there!");
+  if (cleaned === 5) showMessage("Great job!");
+  if (cleaned === 10) showMessage("Keep going!");
+  if (cleaned === 15) showMessage("Magic sack glowing!");
+  if (cleaned === 20) showMessage("Amazing clean-up!");
+  if (cleaned === 30) showMessage("Super helper!");
 
   setTimeout(() => removeItem(item), 250);
-
-  if (cleaned >= levels[currentLevel].goal) {
-    completeLevel();
-  }
 }
 
 function missLitter(item) {
   missed++;
+  totalMissed++;
   score = Math.max(0, score - 5);
   showMessage("Catch the rubbish!");
   removeItem(item);
@@ -273,6 +299,7 @@ function missLitter(item) {
 
 function tapAnimal(item) {
   animalMistakes++;
+  totalAnimalMistakes++;
   score = Math.max(0, score - 10);
   showMessage("Careful! Don’t tap animals.");
   sparkleAt(item.x, item.y, "💙");
@@ -294,20 +321,16 @@ function completeLevel() {
 
     levelScreen.classList.remove("hidden");
 
-    if (currentLevel === levels.length - 1) {
-      nextLevelBtn.textContent = "Finish";
-    } else {
-      nextLevelBtn.textContent = "Next Level";
-    }
-  }, 500);
+    nextLevelBtn.textContent =
+      currentLevel === levels.length - 1 ? "Finish" : "Next Level";
+  }, 450);
 }
 
 function nextLevel() {
   levelScreen.classList.add("hidden");
 
   if (currentLevel === levels.length - 1) {
-    finalStats.textContent = `Final Score: ${score} — Small actions make a big difference!`;
-    winScreen.classList.remove("hidden");
+    showFinalScreen();
     return;
   }
 
@@ -315,11 +338,18 @@ function nextLevel() {
   loadLevel();
 }
 
+function showFinalScreen() {
+  finalStats.textContent =
+    `Final Score: ${score} • Total Cleaned: ${totalCleaned} • Missed: ${totalMissed} • Animal taps: ${totalAnimalMistakes}`;
+
+  winScreen.classList.remove("hidden");
+}
+
 function updateHud() {
   const level = levels[currentLevel];
-  const percent = Math.min(100, Math.round((cleaned / level.goal) * 100));
+  const percent = Math.max(0, Math.min(100, Math.round((timeRemaining / level.timeLimit) * 100)));
   progressFill.style.width = `${percent}%`;
-  percentText.textContent = `${percent}%`;
+  timeText.textContent = `${Math.ceil(timeRemaining)}s`;
   scoreText.textContent = score;
 }
 
@@ -371,8 +401,10 @@ playAgainBtn.addEventListener("click", startGame);
 
 pauseBtn.addEventListener("click", () => {
   if (!running) return;
+
   paused = !paused;
   pauseBtn.textContent = paused ? "Resume" : "Pause";
+
   if (!paused) {
     lastTime = performance.now();
     requestAnimationFrame(gameLoop);
