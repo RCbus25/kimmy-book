@@ -146,14 +146,9 @@ img {
 
 <a class="resource-button"
    href="Book1-Educator-Pack/BK1-Educator-Pack.pdf"
-   onclick="gtag('event', 'educator_pack_download', {
-     'resource_name': 'Book 1 Educator Pack',
-     'resource_type': 'PDF',
-     'event_callback': function() {
-       window.open('Book1-Educator-Pack/BK1-Educator-Pack.pdf', '_blank');
-     }
-   }); return false;">
-  Download Free Educator Activity Pack
+   target="_blank"
+   onclick="gtag('event','educator_pack_download');">
+Download Free Educator Activity Pack
 </a>
 
 <a class="amazon-button"
