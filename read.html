@@ -146,21 +146,25 @@ img {
 
 <a class="resource-button"
    href="Book1-Educator-Pack/BK1-Educator-Pack.pdf"
-   target="_blank"
    onclick="gtag('event', 'educator_pack_download', {
      'resource_name': 'Book 1 Educator Pack',
-     'resource_type': 'PDF'
-   });">
+     'resource_type': 'PDF',
+     'event_callback': function() {
+       window.open('Book1-Educator-Pack/BK1-Educator-Pack.pdf', '_blank');
+     }
+   }); return false;">
   Download Free Educator Activity Pack
 </a>
 
 <a class="amazon-button"
    href="https://www.amazon.com.au/dp/B0GWD98S82"
-   target="_blank"
    onclick="gtag('event', 'amazon_book_click', {
      'book_title': 'Kimmy and the Little Planet Helpers Book 1',
-     'destination': 'Amazon AU'
-   });">
+     'destination': 'Amazon AU',
+     'event_callback': function() {
+       window.open('https://www.amazon.com.au/dp/B0GWD98S82', '_blank');
+     }
+   }); return false;">
   View the Book on Amazon
 </a>
 
