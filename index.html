@@ -22,9 +22,15 @@
 
 <style>
 
-*{margin:0;padding:0;box-sizing:border-box}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
-html{scroll-behavior:smooth}
+html{
+  scroll-behavior:smooth;
+}
 
 body{
   font-family:'Nunito',sans-serif;
@@ -33,9 +39,18 @@ body{
   overflow-x:hidden;
 }
 
-img{max-width:100%;display:block}
+img{
+  max-width:100%;
+  display:block;
+}
 
-a{text-decoration:none;color:inherit}
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+
+/* HEADER */
 
 header{
   position:sticky;
@@ -50,9 +65,13 @@ header{
   box-shadow:0 2px 10px rgba(0,0,0,.05);
 }
 
-header.hide{transform:translateY(-100%)}
+header.hide{
+  transform:translateY(-100%);
+}
 
-.logo img{height:72px}
+.logo img{
+  height:72px;
+}
 
 nav{
   display:flex;
@@ -68,7 +87,8 @@ nav a{
   font-weight:700;
 }
 
-.order-btn,.buy-btn{
+.order-btn,
+.buy-btn{
   background:#f79346;
   color:white;
   padding:14px 28px;
@@ -79,6 +99,9 @@ nav a{
   display:inline-block;
   box-shadow:0 8px 18px rgba(0,0,0,.12);
 }
+
+
+/* HERO */
 
 .hero{
   background:#c8e09a;
@@ -119,7 +142,12 @@ nav a{
   box-shadow:0 12px 30px rgba(0,0,0,.12);
 }
 
-.section{padding:90px 5%}
+
+/* STANDARD SECTIONS */
+
+.section{
+  padding:90px 5%;
+}
 
 .section-inner{
   max-width:1300px;
@@ -149,6 +177,9 @@ nav a{
   box-shadow:0 10px 28px rgba(0,0,0,.12);
 }
 
+
+/* GREEN BANNER */
+
 .green-banner{
   background:#b9d86a;
   padding:55px 5%;
@@ -169,6 +200,9 @@ nav a{
   max-width:900px;
   margin:auto;
 }
+
+
+/* HELP SECTION */
 
 .help-section{
   background:#f5f5f5;
@@ -197,6 +231,9 @@ nav a{
   margin-bottom:16px;
 }
 
+
+/* BOOKS */
+
 .books-section{
   background:#c8e09a;
   padding:90px 5%;
@@ -215,6 +252,7 @@ nav a{
   gap:32px;
   max-width:1350px;
   margin:auto;
+  align-items:stretch;
 }
 
 .book-card{
@@ -224,16 +262,23 @@ nav a{
   box-shadow:0 10px 24px rgba(0,0,0,.08);
   display:flex;
   flex-direction:column;
-  justify-content:space-between;
 }
 
-.book-card img{
-  width:100%;
-  height:420px;
-  object-fit:cover;
-  object-position:center top;
-  border-radius:24px;
+.book-cover{
+  height:480px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   margin-bottom:24px;
+}
+
+.book-cover img{
+  width:auto;
+  height:auto;
+  max-width:100%;
+  max-height:100%;
+  object-fit:contain;
+  border-radius:24px;
 }
 
 .book-card h3{
@@ -251,7 +296,15 @@ nav a{
   font-size:1.05rem;
   line-height:1.7;
   margin-bottom:24px;
+  flex-grow:1;
 }
+
+.book-card .buy-btn{
+  margin-top:auto;
+}
+
+
+/* GALLERY */
 
 .gallery-section{
   background:white;
@@ -271,6 +324,9 @@ nav a{
   border-radius:24px;
   box-shadow:0 10px 24px rgba(0,0,0,.1);
 }
+
+
+/* TESTIMONIAL DIVIDER */
 
 .testimonial-divider{
   background:#b9d86a;
@@ -296,6 +352,9 @@ nav a{
   font-size:1.3rem;
 }
 
+
+/* TESTIMONIALS */
+
 .testimonials{
   background:#f8f4ea;
   padding:90px 5%;
@@ -310,7 +369,9 @@ nav a{
   gap:40px;
 }
 
-.testimonial{text-align:center}
+.testimonial{
+  text-align:center;
+}
 
 .testimonial h3{
   font-family:'Baloo 2',cursive;
@@ -323,6 +384,9 @@ nav a{
   line-height:1.8;
 }
 
+
+/* FOOTER */
+
 footer{
   background:#efe7d8;
   padding:70px 5%;
@@ -334,22 +398,12 @@ footer img{
   margin:auto auto 24px;
 }
 
-footer p{font-size:1rem}
-
-.float-buy{
-  position:fixed;
-  right:20px;
-  bottom:20px;
-  background:#f79346;
-  color:white;
-  padding:14px 26px;
-  border-radius:999px;
-  font-family:'Baloo 2',cursive;
-  font-size:1.15rem;
-  font-weight:700;
-  z-index:999;
-  box-shadow:0 10px 24px rgba(0,0,0,.18);
+footer p{
+  font-size:1rem;
 }
+
+
+/* TABLET */
 
 @media(max-width:900px){
 
@@ -364,8 +418,18 @@ footer p{font-size:1rem}
     grid-template-columns:1fr 1fr;
   }
 
-  .section-image{order:2}
+  .section-image{
+    order:2;
+  }
+
+  .book-cover{
+    height:440px;
+  }
+
 }
+
+
+/* MOBILE */
 
 @media(max-width:600px){
 
@@ -375,7 +439,9 @@ footer p{font-size:1rem}
     flex-direction:column;
   }
 
-  .logo img{height:110px}
+  .logo img{
+    height:110px;
+  }
 
   nav{
     gap:8px 16px;
@@ -393,7 +459,9 @@ footer p{font-size:1rem}
     font-size:.92rem;
   }
 
-  .hero{padding:38px 20px}
+  .hero{
+    padding:38px 20px;
+  }
 
   .hero-text h1{
     font-size:2.7rem;
@@ -424,7 +492,9 @@ footer p{font-size:1rem}
     line-height:1.4;
   }
 
-  .section{padding:50px 20px}
+  .section{
+    padding:50px 20px;
+  }
 
   .section-text h2,
   .books-section h2{
@@ -449,7 +519,13 @@ footer p{font-size:1rem}
     grid-template-columns:1fr;
   }
 
-  .book-card{padding:24px}
+  .book-card{
+    padding:24px;
+  }
+
+  .book-cover{
+    height:420px;
+  }
 
   .gallery-grid{
     grid-template-columns:1fr 1fr;
@@ -464,12 +540,6 @@ footer p{font-size:1rem}
     font-size:3.2rem;
   }
 
-  .float-buy{
-    padding:10px 18px;
-    font-size:.92rem;
-    right:14px;
-    bottom:14px;
-  }
 }
 
 </style>
@@ -477,6 +547,7 @@ footer p{font-size:1rem}
 </head>
 
 <body>
+
 
 <header id="header">
 
@@ -499,6 +570,7 @@ footer p{font-size:1rem}
   </a>
 
 </header>
+
 
 <section class="hero">
 
@@ -531,6 +603,7 @@ footer p{font-size:1rem}
   </div>
 
 </section>
+
 
 <section class="section" id="about">
 
@@ -566,6 +639,7 @@ footer p{font-size:1rem}
 
 </section>
 
+
 <section class="green-banner">
 
   <h2>The Good News Is</h2>
@@ -575,6 +649,7 @@ footer p{font-size:1rem}
   </p>
 
 </section>
+
 
 <section class="section">
 
@@ -607,6 +682,7 @@ footer p{font-size:1rem}
   </div>
 
 </section>
+
 
 <section class="help-section" id="help">
 
@@ -645,16 +721,22 @@ footer p{font-size:1rem}
 
 </section>
 
+
 <section class="books-section" id="books">
 
   <h2>The Books</h2>
 
   <div class="book-row">
 
+
+    <!-- BOOK 1 -->
+
     <div class="book-card">
 
-      <img src="cover.jpg"
-           alt="Kimmy and the Little Planet Helpers Meet Kimmy">
+      <div class="book-cover">
+        <img src="cover.jpg"
+             alt="Kimmy and the Little Planet Helpers Meet Kimmy">
+      </div>
 
       <h3>Meet Kimmy</h3>
 
@@ -672,10 +754,14 @@ footer p{font-size:1rem}
     </div>
 
 
+    <!-- BOOK 2 -->
+
     <div class="book-card">
 
-      <img src="Front Cover Book 2.png"
-           alt="Kimmy and the Little Planet Helpers A Day at the Beach">
+      <div class="book-cover">
+        <img src="Front Cover Book 2.png"
+             alt="Kimmy and the Little Planet Helpers A Day at the Beach">
+      </div>
 
       <h3>A Day at the Beach</h3>
 
@@ -693,10 +779,14 @@ footer p{font-size:1rem}
     </div>
 
 
+    <!-- BOOK 3 -->
+
     <div class="book-card">
 
-      <img src="book3-cover.png"
-           alt="Kimmy and the Little Planet Helpers Bushland Rescue">
+      <div class="book-cover">
+        <img src="book3-cover.png"
+             alt="Kimmy and the Little Planet Helpers Bushland Rescue">
+      </div>
 
       <h3>Bushland Rescue</h3>
 
@@ -713,9 +803,11 @@ footer p{font-size:1rem}
 
     </div>
 
+
   </div>
 
 </section>
+
 
 <section class="gallery-section" id="gallery">
 
@@ -730,6 +822,7 @@ footer p{font-size:1rem}
 
 </section>
 
+
 <section class="testimonial-divider">
 
   <div class="quote-mark">“</div>
@@ -742,9 +835,11 @@ footer p{font-size:1rem}
 
 </section>
 
+
 <section class="testimonials" id="testimonials">
 
   <div class="testimonial-grid">
+
 
     <div class="testimonial">
 
@@ -757,6 +852,7 @@ footer p{font-size:1rem}
 
     </div>
 
+
     <div class="testimonial">
 
       <h3>Mark Thompson</h3>
@@ -767,6 +863,7 @@ footer p{font-size:1rem}
       </p>
 
     </div>
+
 
     <div class="testimonial">
 
@@ -779,9 +876,11 @@ footer p{font-size:1rem}
 
     </div>
 
+
   </div>
 
 </section>
+
 
 <footer>
 
@@ -791,11 +890,6 @@ footer p{font-size:1rem}
 
 </footer>
 
-<a class="float-buy"
-   href="https://www.amazon.com.au/dp/B0H1HHVQQZ?binding=paperback&ref=dbs_dp_rwt_sb_pc_tpbk"
-   target="_blank">
-  View the Books
-</a>
 
 <script>
 
@@ -822,6 +916,7 @@ window.addEventListener('scroll', () => {
 });
 
 </script>
+
 
 </body>
 </html>
