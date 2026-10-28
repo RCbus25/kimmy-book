@@ -265,18 +265,18 @@ nav a{
 }
 
 .book-cover{
-  height:420px;
-  display:flex;
-  align-items:flex-start;
-  justify-content:center;
+  width:100%;
+  aspect-ratio:0.72;
+  overflow:hidden;
+  border-radius:24px;
   margin-bottom:24px;
 }
 
 .book-cover img{
-  height:420px;
-  width:auto;
-  max-width:100%;
-  object-fit:contain;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center center;
   border-radius:24px;
 }
 
@@ -516,14 +516,6 @@ footer p{
 
   .book-card{
     padding:24px;
-  }
-
-  .book-cover{
-    height:380px;
-  }
-
-  .book-cover img{
-    height:380px;
   }
 
   .gallery-grid{
